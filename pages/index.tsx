@@ -62,11 +62,6 @@ export default function Home() {
                 </a>
               </li>
               <li className='nav-item'>
-                <a className='nav-link' style={{ fontWeight: 'bold' }} href='/shop'>
-                  Shop
-                </a>
-              </li>
-              <li className='nav-item'>
                 <a className='nav-link' style={{ fontWeight: 'bold' }} href='/marketplace'>
                   Marketplace
                 </a>

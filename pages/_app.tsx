@@ -6,7 +6,7 @@ import type { AppProps } from 'next/app';
 import dotenv from 'dotenv';
 
 dotenv.config();
-const activeChain = 'ethereum';
+const activeChain = 'mumbai'; //'ethereum';
 
 function App({ Component, pageProps }: AppProps) {
   return (
