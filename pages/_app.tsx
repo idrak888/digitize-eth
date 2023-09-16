@@ -3,14 +3,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
+import dotenv from 'dotenv';
 
-const activeChain: string = 'ethereum';
+dotenv.config();
+const activeChain = 'ethereum';
 
 function App({ Component, pageProps }: AppProps) {
   return (
     <ThirdwebProvider
       activeChain={activeChain}
-      clientId={'e8a318aeb47137f800f553d9291e9c7d'}
+      clientId={process.env.NEXT_PUBLIC_CLIENT_ID}
     >
       <Head>
         <meta name='viewport' content='width=device-width, initial-scale=1' />
@@ -19,5 +21,4 @@ function App({ Component, pageProps }: AppProps) {
     </ThirdwebProvider>
   );
 }
-
 export default App;
