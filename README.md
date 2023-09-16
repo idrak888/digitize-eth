@@ -1,5 +1,15 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+# Digitize-Eth
+This platform provides a dynamic marketplace for physical assets that are represented by NFTs. Whether you're interested in art, collectibles, you'll find a treasure trove of unique items to explore and acquire here.
+
+## Tech Stack 
+- Frontend & Backend: [Next.js](https://nextjs.org/)
+- Web3 Framework: [ThirdWeb](https://thirdweb.com/)
+  - Walletconnect feature
+- Ethereum Attestation Serivce: [ESA](https://attest.sh/) 
+  - This is used to KYC new users and verify the authenticity of the physical asset.
+
 ## Getting Started
 
 First, run the development server:
