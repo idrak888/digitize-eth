@@ -25,9 +25,11 @@ export default function Home() {
             className='navbar-brand'
             style={{
               fontWeight: 'bold',
+              alignItems: "center"
             }}
             href='#'
           >
+            <img width={46} src={"/logo.png"}/>
             Digitize.eth
           </a>
           <button
@@ -44,8 +46,13 @@ export default function Home() {
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
             <ul className='navbar-nav me-auto mb-2 mb-lg-0'>
               <li className='nav-item'>
-                <a className='nav-link' style={{ fontWeight: 'bold' }} href='#'>
-                  Start Trading
+                <a className='nav-link' style={{ fontWeight: 'bold' }} href='/dashboard'>
+                  Dashboard
+                </a>
+              </li>
+              <li className='nav-item'>
+                <a className='nav-link' style={{ fontWeight: 'bold' }} href='/guide'>
+                  How it Works
                 </a>
               </li>
             </ul>
@@ -98,13 +105,7 @@ export default function Home() {
         >
           <div className='row'>
             <div
-              style={{
-                border: '2px solid white',
-                borderRadius: 6,
-                padding: 20,
-                margin: 30,
-              }}
-              className='col-sm'
+              className={`card col-sm`}
             >
               <div className='row'>
                 <img
@@ -112,7 +113,10 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png'
                 />
               </div>
-              <div className='row'>
+              <div className='row' style={{
+                padding: 20,
+                paddingTop: 0
+              }}>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                   <p>More card content</p>
@@ -121,13 +125,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              style={{
-                border: '2px solid white',
-                borderRadius: 6,
-                padding: 20,
-                margin: 30,
-              }}
-              className='col-sm'
+              className={`card col-sm`}
             >
               <div className='row'>
                 <img
@@ -135,7 +133,10 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-mkr-big.png'
                 />
               </div>
-              <div className='row'>
+              <div className='row' style={{
+                padding: 20,
+                paddingTop: 0
+              }}>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                   <p>More card content</p>
@@ -144,13 +145,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              style={{
-                border: '2px solid white',
-                borderRadius: 6,
-                padding: 20,
-                margin: 30,
-              }}
-              className='col-sm'
+              className={`card col-sm`}
             >
               <div className='row'>
                 <img
@@ -158,7 +153,10 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-oc-big.png'
                 />
               </div>
-              <div className='row'>
+              <div className='row' style={{
+                padding: 20,
+                paddingTop: 0
+              }}>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                   <p>More card content</p>
@@ -169,13 +167,7 @@ export default function Home() {
           </div>
           <div className='row'>
             <div
-              style={{
-                border: '2px solid white',
-                borderRadius: 6,
-                padding: 20,
-                margin: 30,
-              }}
-              className='col-sm'
+              className={`card col-sm`}
             >
               <div className='row'>
                 <img
@@ -183,7 +175,10 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-pd-big.png'
                 />
               </div>
-              <div className='row'>
+              <div className='row' style={{
+                padding: 20,
+                paddingTop: 0
+              }}>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                   <p>More card content</p>
@@ -192,13 +187,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              style={{
-                border: '2px solid white',
-                borderRadius: 6,
-                padding: 20,
-                margin: 30,
-              }}
-              className='col-sm'
+              className={`card col-sm`}
             >
               <div className='row'>
                 <img
@@ -206,7 +195,10 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-of-big.png'
                 />
               </div>
-              <div className='row'>
+              <div className='row' style={{
+                padding: 20,
+                paddingTop: 0
+              }}>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                   <p>More card content</p>
@@ -215,13 +207,7 @@ export default function Home() {
               </div>
             </div>
             <div
-              style={{
-                border: '2px solid white',
-                borderRadius: 6,
-                padding: 20,
-                margin: 30,
-              }}
-              className='col-sm'
+              className={`card col-sm`}
             >
               <div className='row'>
                 <img

@@ -97,3 +97,42 @@ a {
   background-color: rgba(3, 4, 16, 0.7);
   backdrop-filter: blur(8px);
 }
+
+.landingImage {
+  transform:
+  rotate3d(.5, -.866, 0, 15deg) rotate(1deg);
+  border-radius: .5em;
+  animation: rotateImage;
+  animation-iteration-count: infinite;
+  animation-duration: 4s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes rotateImage {
+  0% {
+    transform:
+    rotate3d(.5, -.9, 0, 45deg) rotate(1deg);
+  }
+  50% {
+    transform:
+    rotate3d(0, 0, 0, 0deg) rotate(0deg);
+  }
+  100% {
+    transform:
+    rotate3d(.5, -.9, 0, 45deg) rotate(1deg);
+  }
+}
+
+.card {
+  background-color: transparent;
+  border: 2px solid transparent;
+  border-image: linear-gradient(to bottom right, #6b1693 0%, #1a5492 25%, #7ba921 50%, #9d7c22 75%, #951358 100%);
+  border-image-slice: 1;
+  margin: 30px;
+  width: 200px;
+  color: white;
+}
+
+.card img {
+  padding: 20px 30px;
+}
