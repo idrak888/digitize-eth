@@ -16,7 +16,6 @@ export default function index() {
 			</Head>
 			<Navbar />
 
-
 			<div className='container' style={{
 				marginTop: 100
 			}}>

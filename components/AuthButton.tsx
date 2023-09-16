@@ -63,8 +63,10 @@ export default function AuthButton() {
             border: 0
           }}>
             <Form className="AuthForm">
-              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="First Name" />
+              <input type="text" placeholder="Last Name" />
               <input type="text" placeholder="Email Address" />
+              <input type="text" readOnly={true} value={walletAddress} />
             </Form>
           </Modal.Body>
           <Modal.Footer style={{
