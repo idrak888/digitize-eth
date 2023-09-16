@@ -100,7 +100,7 @@ a {
 
 .landingImage {
   transform:
-  rotate3d(.5, -.866, 0, 15deg) rotate(1deg);
+    rotate3d(.5, -.866, 0, 15deg) rotate(1deg);
   border-radius: .5em;
   animation: rotateImage;
   animation-iteration-count: infinite;
@@ -111,28 +111,43 @@ a {
 @keyframes rotateImage {
   0% {
     transform:
-    rotate3d(.5, -.9, 0, 45deg) rotate(1deg);
+      rotate3d(.5, -.9, 0, 45deg) rotate(1deg);
   }
+
   50% {
     transform:
-    rotate3d(0, 0, 0, 0deg) rotate(0deg);
+      rotate3d(0, 0, 0, 0deg) rotate(0deg);
   }
+
   100% {
     transform:
-    rotate3d(.5, -.9, 0, 45deg) rotate(1deg);
+      rotate3d(.5, -.9, 0, 45deg) rotate(1deg);
   }
 }
 
 .card {
-  background-color: transparent;
-  border: 2px solid transparent;
-  border-image: linear-gradient(to bottom right, #6b1693 0%, #1a5492 25%, #7ba921 50%, #9d7c22 75%, #951358 100%);
-  border-image-slice: 1;
+  background-color: rgb(0, 0, 0);
+  border: 1px solid grey;
   margin: 30px;
-  width: 200px;
+  width: 100%;
   color: white;
+  border-radius: 20px;
 }
 
 .card img {
-  padding: 20px 30px;
+  padding: 15px 20px;
+  display: block;
+  max-width: 330px;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  margin: auto;
+}
+
+.row {
+  align-items: center;
+}
+
+.cardRow {
+  padding: 0px 40px 20px 40px;
 }

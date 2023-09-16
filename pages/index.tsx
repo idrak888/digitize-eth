@@ -113,13 +113,9 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png'
                 />
               </div>
-              <div className='row' style={{
-                padding: 20,
-                paddingTop: 0
-              }}>
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
-                  <p>More card content</p>
                 </div>
                 <div className='col-sm-3'>Info</div>
               </div>
@@ -133,13 +129,9 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-mkr-big.png'
                 />
               </div>
-              <div className='row' style={{
-                padding: 20,
-                paddingTop: 0
-              }}>
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
-                  <p>More card content</p>
                 </div>
                 <div className='col-sm-3'>Info</div>
               </div>
@@ -153,13 +145,9 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-oc-big.png'
                 />
               </div>
-              <div className='row' style={{
-                padding: 20,
-                paddingTop: 0
-              }}>
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
-                  <p>More card content</p>
                 </div>
                 <div className='col-sm-3'>Info</div>
               </div>
@@ -175,13 +163,9 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-pd-big.png'
                 />
               </div>
-              <div className='row' style={{
-                padding: 20,
-                paddingTop: 0
-              }}>
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
-                  <p>More card content</p>
                 </div>
                 <div className='col-sm-3'>Info</div>
               </div>
@@ -195,13 +179,9 @@ export default function Home() {
                   src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-of-big.png'
                 />
               </div>
-              <div className='row' style={{
-                padding: 20,
-                paddingTop: 0
-              }}>
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
-                  <p>More card content</p>
                 </div>
                 <div className='col-sm-3'>Info</div>
               </div>
@@ -212,13 +192,12 @@ export default function Home() {
               <div className='row'>
                 <img
                   width={150}
-                  src='https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png'
+                  src='https://i.psacard.com/cardfacts/1999-nintendo-pokemon-game-4-charizard-holo-1st-edition-91294.jpg?h=1000'
                 />
               </div>
-              <div className='row'>
+              <div  className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
-                  <p>More card content</p>
                 </div>
                 <div className='col-sm-3'>Info</div>
               </div>
