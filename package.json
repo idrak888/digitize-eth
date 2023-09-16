@@ -9,7 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@thirdweb-dev/react": "^3.14.41",
+    "@thirdweb-dev/sdk": "^3.10.60",
+    "@web3-react/core": "^8.2.2",
     "bootstrap": "^5.3.2",
+    "ethers": "^5.7.2",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0"

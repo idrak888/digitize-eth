@@ -1,7 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inconsolata } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
+import { ConnectWallet } from "@thirdweb-dev/react";
 
 export default function Home() {
 	return (
@@ -12,11 +11,11 @@ export default function Home() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<nav class="navbar navbar-expand-lg navbar-dark" style={{
-				backgroundColor: "black"
-			}}>
+			<nav class="navbar navbar-expand-lg navbar-dark fixed-top">
 				<div class="container-fluid" style={{
-					maxWidth: 1100
+					maxWidth: 1150,
+					paddingTop: 10,
+					paddingBottom: 10
 				}}>
 					<a class="navbar-brand" style={{
 						fontWeight: "bold"
@@ -31,14 +30,14 @@ export default function Home() {
 							</li>
 						</ul>
 						<form class="d-flex">
-							<button style={{
-								width: 200
-							}} class="btn btn-outline-light" type="submit">Connect Wallet</button>
+							<ConnectWallet />
 						</form>
 					</div>
 				</div>
 			</nav>
-			<div className='container'>
+			<div className={`${styles.center} container`} style={{
+				marginTop: 100
+			}}>
 				<div className="row" style={{
 					display: "flex",
 					justifyContent: "center",
@@ -46,21 +45,25 @@ export default function Home() {
 				}}>
 					<div className='col-sm'>
 						<h1 style={{
-							fontSize: 60,
+							fontSize: 70,
 							fontWeight: "bold"
 						}}>Digitize your physical collectibles into NFTs</h1>
 					</div>
 					<div className='col-sm'>
-						<img src="https://i.psacard.com/psacard/images/v4/services/tradingcard/grading-value.jpg" />
+						<img className='landingImage' style={{
+							width: "100%",
+							maxWidth: 400,
+							padding: 30
+						}} src={"/image1.png"} />
 					</div>
 				</div>
 				<div style={{
 					marginTop: 100
 				}}>
 					<div className='row'>
-						<div style={{ border: "2px solid black", borderRadius: 6, padding: 30, margin: 20 }} className='col-sm'>
+						<div style={{ border: "2px solid white", borderRadius: 6, padding: 20, margin: 30 }} className='col-sm'>
 							<div className='row'>
-								<img width={200} src="https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png" />
+								<img width={150} src="https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png" />
 							</div>
 							<div className='row'>
 								<div className='col-sm-9'>
@@ -72,9 +75,9 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
-						<div style={{ border: "2px solid black", borderRadius: 6, padding: 30, margin: 20 }} className='col-sm'>
+						<div style={{ border: "2px solid white", borderRadius: 6, padding: 20, margin: 30 }} className='col-sm'>
 							<div className='row'>
-								<img width={200} src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-mkr-big.png" />
+								<img width={150} src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-mkr-big.png" />
 							</div>
 							<div className='row'>
 								<div className='col-sm-9'>
@@ -86,9 +89,9 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
-						<div style={{ border: "2px solid black", borderRadius: 6, padding: 30, margin: 20 }} className='col-sm'>
+						<div style={{ border: "2px solid white", borderRadius: 6, padding: 20, margin: 30 }} className='col-sm'>
 							<div className='row'>
-								<img width={200} src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-oc-big.png" />
+								<img width={150} src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-oc-big.png" />
 							</div>
 							<div className='row'>
 								<div className='col-sm-9'>
@@ -102,9 +105,9 @@ export default function Home() {
 						</div>
 					</div>
 					<div className='row'>
-						<div style={{ border: "2px solid black", borderRadius: 6, padding: 30, margin: 20 }} className='col-sm'>
+						<div style={{ border: "2px solid white", borderRadius: 6, padding: 20, margin: 30 }} className='col-sm'>
 							<div className='row'>
-								<img width={200} src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-pd-big.png" />
+								<img width={150} src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-pd-big.png" />
 							</div>
 							<div className='row'>
 								<div className='col-sm-9'>
@@ -116,9 +119,9 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
-						<div style={{ border: "2px solid black", borderRadius: 6, padding: 30, margin: 20 }} className='col-sm'>
+						<div style={{ border: "2px solid white", borderRadius: 6, padding: 20, margin: 30 }} className='col-sm'>
 							<div className='row'>
-								<img width={200} src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-of-big.png" />
+								<img width={150} src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-of-big.png" />
 							</div>
 							<div className='row'>
 								<div className='col-sm-9'>
@@ -130,9 +133,9 @@ export default function Home() {
 								</div>
 							</div>
 						</div>
-						<div style={{ border: "2px solid black", borderRadius: 6, padding: 30, margin: 20 }} className='col-sm'>
+						<div style={{ border: "2px solid white", borderRadius: 6, padding: 20, margin: 30 }} className='col-sm'>
 							<div className='row'>
-								<img width={200} src="https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png" />
+								<img width={150} src="https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png" />
 							</div>
 							<div className='row'>
 								<div className='col-sm-9'>
