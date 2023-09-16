@@ -23,16 +23,6 @@ export default function AuthButton() {
   const [name, setName] = useState("");
   const [physicalAddress, setPhysicalAddress] = useState("");
   const [email, setEmail] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
-
-  // Modal functions
-  const openModal = useCallback(() => {
-    setIsOpen(true);
-  }, []);
-
-  const closeModal = useCallback(() => {
-    setIsOpen(false);
-  }, []);
 
   useEffect(() => {
     async function getWalletInfo() {
@@ -41,17 +31,16 @@ export default function AuthButton() {
         setWalletAddress(address);
 
         // Make API call to get user info if it exists
-        const res = await axios.post<User | null>("/api/auth/getUser", {
-          walletAddress,
-        });
-        const user = res.data;
+        // const res = await axios.post<User | null>("/api/auth/getUser", {
+        //   walletAddress,
+        // });
+        const user = undefined;
         if (user) {
           setName(user.name);
           setPhysicalAddress(user.physicalAddress);
           setEmail(user.email);
         } else {
-          // open dialog for profiles
-          setIsOpen(true);
+          handleShow();
         }
       }
     }
@@ -60,18 +49,30 @@ export default function AuthButton() {
   }, [walletInstance]);
 
   return (
-    <div>
+    <div className="AuthButton">
       <>
         <Modal show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login Form</Modal.Title>
+          <Modal.Header closeButton style={{
+            backgroundColor: "#080808",
+            border: 0
+          }}>
+            <Modal.Title>Complete Profile</Modal.Title>
           </Modal.Header>
-          <Modal.Body>
-            
+          <Modal.Body style={{
+            backgroundColor: "#080808",
+            border: 0
+          }}>
+            <Form className="AuthForm">
+              <input type="text" placeholder="Username" />
+              <input type="text" placeholder="Email Address" />
+            </Form>
           </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close Modal
+          <Modal.Footer style={{
+            backgroundColor: "#080808",
+            border: 0
+          }}>
+            <Button variant="primary" onClick={() => { }}>
+              Continue
             </Button>
           </Modal.Footer>
         </Modal>

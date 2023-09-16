@@ -15,7 +15,7 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/logo.png' />
       </Head>
-      <Navbar/>
+      <Navbar />
       <div
         className={`${styles.center} container`}
         style={{
@@ -65,11 +65,11 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png"
                 />
               </div>
-              <div className='row cardRow'>
-                <div className='col-sm-9'>
-                  <h3>Card content</h3>
-                </div>
-                <div className="col-sm-3">Info</div>
+
+              <div className='cardRow'>
+                <h3>[413928878] Kobe Bryant</h3>
+                Cost: 1.0 MATIC
+                <p>Creator: 0x1fa6756aC6D9104B0837Dee0d736a51f664A6a66</p>
               </div>
             </div>
             <div className={`card col-sm`}>
@@ -79,11 +79,11 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-mkr-big.png"
                 />
               </div>
-              <div className='row cardRow'>
-                <div className='col-sm-9'>
-                  <h3>Card content</h3>
-                </div>
-                <div className="col-sm-3">Info</div>
+
+              <div className='cardRow'>
+                <h3>[413928878] Kobe Bryant</h3>
+                Cost: 1.0 MATIC
+                <p>Creator: 0x1fa6756aC6D9104B0837Dee0d736a51f664A6a66</p>
               </div>
             </div>
             <div className={`card col-sm`}>
@@ -93,11 +93,10 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-oc-big.png"
                 />
               </div>
-              <div className='row cardRow'>
-                <div className='col-sm-9'>
-                  <h3>Card content</h3>
-                </div>
-                <div className="col-sm-3">Info</div>
+              <div className='cardRow'>
+                <h3>[413928878] Kobe Bryant</h3>
+                Cost: 1.0 MATIC
+                <p>Creator: 0x1fa6756aC6D9104B0837Dee0d736a51f664A6a66</p>
               </div>
             </div>
           </div>
@@ -109,11 +108,11 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-pd-big.png"
                 />
               </div>
-              <div className='row cardRow'>
-                <div className='col-sm-9'>
-                  <h3>Card content</h3>
-                </div>
-                <div className="col-sm-3">Info</div>
+
+              <div className='cardRow'>
+                <h3>[413928878] Kobe Bryant</h3>
+                Cost: 1.0 MATIC
+                <p>Creator: 0x1fa6756aC6D9104B0837Dee0d736a51f664A6a66</p>
               </div>
             </div>
             <div className={`card col-sm`}>
@@ -123,11 +122,11 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-of-big.png"
                 />
               </div>
-              <div className='row cardRow'>
-                <div className='col-sm-9'>
-                  <h3>Card content</h3>
-                </div>
-                <div className="col-sm-3">Info</div>
+
+              <div className='cardRow'>
+                <h3>[413928878] Kobe Bryant</h3>
+                Cost: 1.0 MATIC
+                <p>Creator: 0x1fa6756aC6D9104B0837Dee0d736a51f664A6a66</p>
               </div>
             </div>
             <div className={`card col-sm`}>
@@ -137,11 +136,10 @@ export default function Home() {
                   src="https://i.psacard.com/cardfacts/1999-nintendo-pokemon-game-4-charizard-holo-1st-edition-91294.jpg?h=1000"
                 />
               </div>
-              <div className="row cardRow">
-                <div className="col-sm-9">
-                  <h3>Card content</h3>
-                </div>
-                <div className="col-sm-3">Info</div>
+              <div className='cardRow'>
+                <h3>[413928878] Kobe Bryant</h3>
+                Cost: 1.0 MATIC
+                <p>Creator: 0x1fa6756aC6D9104B0837Dee0d736a51f664A6a66</p>
               </div>
             </div>
           </div>

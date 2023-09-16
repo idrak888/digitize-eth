@@ -139,8 +139,11 @@ a {
   border: 1px solid grey;
   margin: 30px;
   width: 100%;
+  max-width: 300px;
+  padding: 20px;
   color: white;
   border-radius: 20px;
+  display: inline-block;
 }
 
 .card img {
@@ -158,14 +161,15 @@ a {
 }
 
 .cardRow {
-  padding: 0px 40px 20px 40px;
+  padding: 20px;
+  padding-top: 0;
 }
 
 .modal-content {
   background-color: rgb(19, 19, 19);
 }
 
-.modal-content form input {
+.AuthForm input {
   display: block;
   width: 100%;
   padding: 6px 12px;

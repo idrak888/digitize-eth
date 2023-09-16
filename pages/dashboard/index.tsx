@@ -16,7 +16,7 @@ export default function index() {
 			</Head>
 			<Navbar />
 
-			
+
 			<div className='container' style={{
 				marginTop: 100
 			}}>
@@ -47,58 +47,6 @@ export default function index() {
 					}}><h4>Your Items</h4> <button style={{
 						marginLeft: 20
 					}} className='btn btn-outline-primary'>Mint New</button></div>
-					<div>
-						<div className='row'>
-							<div
-								className={`card col-sm`}
-							>
-								<div className='row'>
-									<img
-										width={150}
-										src='https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png'
-									/>
-								</div>
-								<div className='row cardRow'>
-									<div className='col-sm-9'>
-										<h3>Card content</h3>
-									</div>
-									<div className='col-sm-3'>Info</div>
-								</div>
-							</div>
-							<div
-								className={`card col-sm`}
-							>
-								<div className='row'>
-									<img
-										width={150}
-										src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-mkr-big.png'
-									/>
-								</div>
-								<div className='row cardRow'>
-									<div className='col-sm-9'>
-										<h3>Card content</h3>
-									</div>
-									<div className='col-sm-3'>Info</div>
-								</div>
-							</div>
-							<div
-								className={`card col-sm`}
-							>
-								<div className='row'>
-									<img
-										width={150}
-										src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-oc-big.png'
-									/>
-								</div>
-								<div className='row cardRow'>
-									<div className='col-sm-9'>
-										<h3>Card content</h3>
-									</div>
-									<div className='col-sm-3'>Info</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</>
