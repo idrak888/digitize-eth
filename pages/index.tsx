@@ -58,9 +58,9 @@ export default function Home() {
                 </a>
               </li>
             </ul>
-            {/* <form className="d-flex">
-              <AuthButton />;
-            </form> */}
+            <form className="d-flex">
+              <AuthButton />
+            </form>
           </div>
         </div>
       </nav>

@@ -52,15 +52,13 @@ export default function AuthButton() {
   return (
     <div>
       <Dialog>
-        <DialogTrigger asChild>
-          <Button
-            className="hidden"
-            variant="outline"
-            ref={hiddenDialogButtonRef}
-          >
-            Update Profile
-          </Button>
-        </DialogTrigger>
+        {
+          <DialogTrigger asChild>
+            <Button hidden variant="outline" ref={hiddenDialogButtonRef}>
+              Update Profile
+            </Button>
+          </DialogTrigger>
+        }
         <DialogContent className="sm:max-w-[425px]" asChild>
           <DialogHeader>
             <DialogTitle className="font-semibold">Setup Profile</DialogTitle>
