@@ -27,20 +27,20 @@ export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
   const { contract: packContract } = useContract(contractAddress);
   const { data: packNFT, isLoading: loadingNFT } = useNFT(packContract, tokenId);
 
-  const { data: packListings, isLoading: loadingPackListings } = useDirectListings(
+  const { data: cardListings, isLoading: loadingPackListings } = useDirectListings(
     marketplace,
     {
       tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,
     }
   );
-  console.log('Pack Listings: ', packListings);
+  console.log('Card Listings: ', cardListings);
 
-  async function buyPack() {
+  async function buyCard() {
     let txResult;
 
-    if (packListings?.[tokenId]) {
+    if (cardListings?.[tokenId]) {
       txResult = await marketplace?.directListings.buyFromListing(
-        packListings[tokenId].id,
+        cardListings[tokenId].id,
         1
       );
     } else {
@@ -61,16 +61,16 @@ export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
             <h3>{packNFT?.metadata.name}</h3>
 
             <p>
-              Cost: {packListings![tokenId].currencyValuePerToken.displayValue}{' '}
-              {` ` + packListings![tokenId].currencyValuePerToken.symbol}
+              Cost: {cardListings![tokenId].currencyValuePerToken.displayValue}{' '}
+              {` ` + cardListings![tokenId].currencyValuePerToken.symbol}
             </p>
-            <p>Creator: {packListings![tokenId].creatorAddress}</p>
+            <p>Creator: {cardListings![tokenId].creatorAddress}</p>
             {!address ? (
               <p>Login to buy</p>
             ) : (
               <Web3Button
                 contractAddress={MUMBAI_MARKETPLACE_ADDRESS}
-                action={() => buyPack()}
+                action={() => buyCard()}
               >
                 Buy
               </Web3Button>
