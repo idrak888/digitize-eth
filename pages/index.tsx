@@ -31,7 +31,7 @@ export default function Home() {
             }}
             href="#"
           >
-            <img width={46} src={"/logo.png"}/>
+            <img width={46} src={"/logo.png"} />
             Digitize.eth
           </a>
           <button
