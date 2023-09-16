@@ -2,6 +2,7 @@ import React from 'react'
 import { ConnectWallet } from '@thirdweb-dev/react';
 import { useAddress } from "@thirdweb-dev/react";
 import Head from 'next/head';
+import Navbar from '@/components/Navbar';
 
 export default function index() {
 	const address = useAddress();
@@ -13,56 +14,9 @@ export default function index() {
 				<meta name='viewport' content='width=device-width, initial-scale=1' />
 				<link rel='icon' href='/favicon.ico' />
 			</Head>
-			<nav className='navbar navbar-expand-lg navbar-dark fixed-top'>
-				<div
-					className='container-fluid'
-					style={{
-						maxWidth: 1150,
-						paddingTop: 10,
-						paddingBottom: 10,
-					}}
-				>
-					<a
-						className='navbar-brand'
-						style={{
-							fontWeight: 'bold',
-							alignItems: "center"
-						}}
-						href='/'
-					>
-						<img width={46} src={"/logo.png"} />
-						Digitize.eth
-					</a>
-					<button
-						className='navbar-toggler'
-						type='button'
-						data-bs-toggle='collapse'
-						data-bs-target='#navbarSupportedContent'
-						aria-controls='navbarSupportedContent'
-						aria-expanded='false'
-						aria-label='Toggle navigation'
-					>
-						<span className='navbar-toggler-icon'></span>
-					</button>
-					<div className='collapse navbar-collapse' id='navbarSupportedContent'>
-						<ul className='navbar-nav me-auto mb-2 mb-lg-0'>
-							<li className='nav-item'>
-								<a className='nav-link' style={{ fontWeight: 'bold' }} href='/dashboard'>
-									Dashboard
-								</a>
-							</li>
-							<li className='nav-item'>
-								<a className='nav-link' style={{ fontWeight: 'bold' }} href='/guide'>
-									How it Works
-								</a>
-							</li>
-						</ul>
-						<form className='d-flex'>
-							<ConnectWallet />
-						</form>
-					</div>
-				</div>
-			</nav>
+			<Navbar />
+
+			
 			<div className='container' style={{
 				marginTop: 100
 			}}>
@@ -104,10 +58,7 @@ export default function index() {
 										src='https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png'
 									/>
 								</div>
-								<div className='row' style={{
-									padding: 20,
-									paddingTop: 0
-								}}>
+								<div className='row cardRow'>
 									<div className='col-sm-9'>
 										<h3>Card content</h3>
 									</div>
@@ -123,10 +74,7 @@ export default function index() {
 										src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-mkr-big.png'
 									/>
 								</div>
-								<div className='row' style={{
-									padding: 20,
-									paddingTop: 0
-								}}>
+								<div className='row cardRow'>
 									<div className='col-sm-9'>
 										<h3>Card content</h3>
 									</div>
@@ -142,10 +90,7 @@ export default function index() {
 										src='https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-oc-big.png'
 									/>
 								</div>
-								<div className='row' style={{
-									padding: 20,
-									paddingTop: 0
-								}}>
+								<div className='row cardRow'>
 									<div className='col-sm-9'>
 										<h3>Card content</h3>
 									</div>

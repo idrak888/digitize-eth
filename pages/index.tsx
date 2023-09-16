@@ -4,6 +4,7 @@ import { ConnectWallet, useContract } from '@thirdweb-dev/react';
 import React from 'react';
 import { MARKETPLACE_ADDRESS } from '@/constant/addresses';
 import AuthButton from "@/components/AuthButton";
+import Navbar from '@/components/Navbar';
 
 export default function Home() {
   return (
@@ -14,70 +15,7 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/logo.png' />
       </Head>
-      <nav className="navbar navbar-expand-lg navbar-dark fixed-top">
-        <div
-          className="container-fluid"
-          style={{
-            maxWidth: 1150,
-            paddingTop: 10,
-            paddingBottom: 10,
-          }}
-        >
-          <a
-            className="navbar-brand"
-            style={{
-              fontWeight: 'bold',
-              alignItems: 'center',
-            }}
-            href='/'
-          >
-            <img width={46} src={'/logo.png'} />
-            Digitize.eth
-          </a>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item">
-                <a
-                  className="nav-link"
-                  style={{ fontWeight: "bold" }}
-                  href="/dashboard"
-                >
-                  Dashboard
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' style={{ fontWeight: 'bold' }} href='/how-it-works'>
-                  How it Works
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' style={{ fontWeight: 'bold' }} href='/shop'>
-                  Shop
-                </a>
-              </li>
-              <li className='nav-item'>
-                <a className='nav-link' style={{ fontWeight: 'bold' }} href='/marketplace'>
-                  Marketplace
-                </a>
-              </li>
-            </ul>
-            <form className='d-flex'>
-              <ConnectWallet btnTitle='Login'/>
-            </form>
-          </div>
-        </div>
-      </nav>
+      <Navbar/>
       <div
         className={`${styles.center} container`}
         style={{
@@ -127,13 +65,7 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/1952-topps-mickey-mantel-psa-pr-1.png"
                 />
               </div>
-              <div
-                className='row'
-                style={{
-                  padding: 20,
-                  paddingTop: 0,
-                }}
-              >
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                 </div>
@@ -147,13 +79,7 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-mkr-big.png"
                 />
               </div>
-              <div
-                className='row'
-                style={{
-                  padding: 20,
-                  paddingTop: 0,
-                }}
-              >
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                 </div>
@@ -167,13 +93,7 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-oc-big.png"
                 />
               </div>
-              <div
-                className='row'
-                style={{
-                  padding: 20,
-                  paddingTop: 0,
-                }}
-              >
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                 </div>
@@ -189,13 +109,7 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-pd-big.png"
                 />
               </div>
-              <div
-                className='row'
-                style={{
-                  padding: 20,
-                  paddingTop: 0,
-                }}
-              >
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                 </div>
@@ -209,13 +123,7 @@ export default function Home() {
                   src="https://i.psacard.com/psacard/images/resources/gradingstandards/grdstd-qualifier-of-big.png"
                 />
               </div>
-              <div
-                className='row'
-                style={{
-                  padding: 20,
-                  paddingTop: 0,
-                }}
-              >
+              <div className='row cardRow'>
                 <div className='col-sm-9'>
                   <h3>Card content</h3>
                 </div>

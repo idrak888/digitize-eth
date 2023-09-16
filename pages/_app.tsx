@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 import 'bootstrap/dist/css/bootstrap.css';
 import { ThirdwebProvider } from '@thirdweb-dev/react';
@@ -9,6 +10,9 @@ dotenv.config();
 const activeChain = 'ethereum';
 
 function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    require("bootstrap/dist/js/bootstrap.bundle.min.js");
+  }, []);
   return (
     <ThirdwebProvider
       activeChain={activeChain}
