@@ -136,14 +136,6 @@ export default function MintButton() {
             contractAddress={MUMBAI_DIGITIZE_ETH_ADDRESS}
             isDisabled={!file || !itemName || !psaGrade || !address}
             action={async () => {
-              // Upload the file to IPFS
-              // const url = await handleUpload();
-              // console.log(url);
-              // // If successful, get the URL
-              // if (!url) {
-              //   alert("Failed to upload file to IPFS, please try again.");
-              //   return;
-              // }
               if (!address) {
                 alert("Please connect your wallet");
                 return;
@@ -158,6 +150,7 @@ export default function MintButton() {
                 supply: 1,
                 to: address, // disabled if address is undefined
               });
+              handleClose();
             }}
           >
             Submit
