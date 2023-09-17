@@ -150,16 +150,12 @@ export default function MintButton() {
               }
 
               await mintNft({
-                // metadata: {
-                //   name: `[${certificateNumber}] ${itemName}`,
-                //   description: `${itemName} - ${psaGrade} - #${certificateNumber}`,
-                //   image: file, // Accepts any URL or File type
-                // },
                 metadata: {
-                  name: "My NFT",
-                  description: "This is my NFT",
-                  image: "ipfs://example.com/my-nft.png", // Accepts any URL or File type
+                  name: `[${certificateNumber}] ${itemName}`,
+                  description: `${itemName} - ${psaGrade} - #${certificateNumber}`,
+                  image: file, // Accepts any URL or File type
                 },
+                supply: 1,
                 to: address, // disabled if address is undefined
               });
             }}
