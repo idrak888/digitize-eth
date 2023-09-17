@@ -4,6 +4,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 <img width="1330" alt="Screenshot 2023-09-17 at 4 44 59 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/f8d3ff7c-e5fc-4e11-89dc-0eec435be827">
 
+<img width="1317" alt="Screenshot 2023-09-17 at 4 45 51 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/e48adebb-0975-4af9-bb5d-41bffe270248">
+
+
 
 ## Inspiration 💡
 
