@@ -15,7 +15,7 @@ import styles from '../styles/Home.module.css';
 type Props = {
   contractAddress: string;
   tokenId: any;
-  status?: string;
+  status?: any;
   hideBtn: boolean;
 };
 

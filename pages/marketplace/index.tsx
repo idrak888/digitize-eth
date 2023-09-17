@@ -43,6 +43,7 @@ export default function MarketPlace() {
                   <PackNFTCard
                     contractAddress={listing.assetContractAddress}
                     tokenId={listing.tokenId}
+                    hideBtn={false}
                   />
                 </div>
               ))
