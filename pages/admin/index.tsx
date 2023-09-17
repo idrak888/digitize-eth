@@ -48,7 +48,7 @@ export default function index() {
                 >
                     <div className="row actionRow">
                         <div className='col-sm'>
-                            order #   
+                            order #
                         </div>
                         <div className='col-sm'>
                             Details
@@ -63,7 +63,7 @@ export default function index() {
 
                     <div className="row actionRow">
                         <div className='col-sm'>
-                            order #   
+                            order #
                         </div>
                         <div className='col-sm'>
                             Details
