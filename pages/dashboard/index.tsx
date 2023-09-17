@@ -58,16 +58,6 @@ export default function index() {
             : "Not signed in"}
           !
         </h1>
-        <div
-          className="row"
-          style={{
-            fontSize: 30,
-            fontWeight: 'bold',
-            marginLeft: 20,
-          }}
-        >
-          Welcome Back!
-        </div>
         <div className='row' style={{ borderBottom: '1px solid grey', padding: 20 }}>
           <div className="col-sm-2">
             <img
