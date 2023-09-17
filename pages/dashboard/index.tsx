@@ -91,7 +91,7 @@ export default function index() {
                 <div>
                   <h3 suppressHydrationWarning></h3>
                   <p suppressHydrationWarning></p>
-                  text
+                  Please sign in!
                 </div>
             }
           </div>
