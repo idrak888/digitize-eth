@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useContract, useDirectListings, useWallet } from '@thirdweb-dev/react';
+import {
+  Web3Button,
+  useContract,
+  useDirectListings,
+  useWallet,
+} from '@thirdweb-dev/react';
 import MintButton from '@/components/MintButton';
 import {
   MUMBAI_DIGITIZE_ETH_ADDRESS,
@@ -13,6 +18,7 @@ import { useLocalStorage } from 'usehooks-ts';
 import { User } from '@prisma/client';
 import { USER_LOCAL_STORAGE_KEY } from '@/config';
 import Loading from '@/components/Loading';
+import { PersonalNFTCard } from '@/components/PersonalNFT';
 
 export default function index() {
   const { contract: marketplace } = useContract(
@@ -116,11 +122,11 @@ export default function index() {
                 ?.filter((listing) => listing.creatorAddress == address)
                 .map((listing, index) => (
                   <div className='card' key={index}>
-                    <PackNFTCard
+                    <PersonalNFTCard
                       contractAddress={listing.assetContractAddress}
                       tokenId={listing.tokenId}
                       status={listing.status.toString()}
-                      allowTradeAndBuy={true}
+                      allowTradeAndBuy={false}
                     />
                   </div>
                 ))
