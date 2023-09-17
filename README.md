@@ -6,6 +6,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 <img width="1624" alt="Screenshot 2023-09-17 at 6 58 30 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/9c80bde3-1c15-4c9e-9833-aaf7e3861617">
 
+![image](https://github.com/idrak888/digitize-eth/assets/72030222/6e3cd1a9-7642-4a4c-b724-f3916533a4f2)
+
+
 
 ## Inspiration 💡
 
