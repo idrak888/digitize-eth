@@ -12,6 +12,7 @@ import Navbar from "@/components/Navbar";
 import { useLocalStorage } from "usehooks-ts";
 import { User } from "@prisma/client";
 import { USER_LOCAL_STORAGE_KEY } from "@/config";
+import Loading from "@/components/Loading";
 
 export default function index() {
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
@@ -117,7 +118,7 @@ export default function index() {
                   </div>
                 ))
               ) : (
-                <p>Loading...</p>
+                <Loading />
               )}
             </div>
           </div>
