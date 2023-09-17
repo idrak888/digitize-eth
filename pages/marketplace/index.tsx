@@ -20,7 +20,6 @@ export default function MarketPlace() {
       tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,
     }
   );
-  console.log('DirectPack', directListings);
 
   return (
     <>

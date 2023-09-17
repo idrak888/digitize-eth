@@ -7,6 +7,9 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
+        <div className="Footer">
+          © 2023 Digitize.eth @ Hack the North 10
+        </div>
       </body>
     </Html>
   )

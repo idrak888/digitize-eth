@@ -6,9 +6,9 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<boolean>
 ) {
-  const { name, walletAddress, email, physicalAddress } = req.body;
+  const { name, walletAddress, email, physicalAddress, kycEsa } = req.body;
 
-  if (!name || !walletAddress || !email || !physicalAddress) {
+  if (!name || !walletAddress || !email || !physicalAddress || !kycEsa) {
     return res.status(401).json(false);
   }
   
@@ -18,6 +18,7 @@ export default async function handler(
       walletAddress,
       email,
       physicalAddress,
+      kycEsa,
     },
   });
 

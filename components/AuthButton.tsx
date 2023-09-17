@@ -48,7 +48,6 @@ export default function AuthButton() {
         setName(user.name);
         setPhysicalAddress(user.physicalAddress);
         setEmail(user.email);
-        console.log('ESA TX_ID:', SEPOLIA_KYC_TX_ID);
       } else {
         handleShow();
       }
@@ -114,7 +113,8 @@ export default function AuthButton() {
                   name,
                   physicalAddress,
                   email,
-                });
+                  kycEsa: "empty",
+                } as User);
                 handleClose();
               }}
               disabled={!walletAddress || !name || !physicalAddress || !email}

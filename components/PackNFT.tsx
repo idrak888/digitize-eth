@@ -16,9 +16,10 @@ type Props = {
   contractAddress: string;
   tokenId: any;
   status?: string;
+  hideBtn: boolean;
 };
 
-export const PackNFTCard = ({ contractAddress, tokenId, status }: Props) => {
+export const PackNFTCard = ({ contractAddress, tokenId, status, hideBtn }: Props) => {
   const address = useAddress();
 
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
@@ -72,14 +73,14 @@ export const PackNFTCard = ({ contractAddress, tokenId, status }: Props) => {
 
             {!address ? (
               <p>Login to buy</p>
-            ) : (
+            ) : !hideBtn ? (
               <Web3Button
                 contractAddress={MUMBAI_MARKETPLACE_ADDRESS}
                 action={() => buyCard()}
               >
                 Buy
               </Web3Button>
-            )}
+            ) : <></>}
           </div>
         </div>
       ) : (
