@@ -10,11 +10,23 @@ import { useAddress } from "@thirdweb-dev/react";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import { useLocalStorage } from "usehooks-ts";
-import { User } from "@prisma/client";
+import { Trade, User } from "@prisma/client";
 import { USER_LOCAL_STORAGE_KEY } from "@/config";
 import Loading from "@/components/Loading";
+import prisma from "@/lib/prisma";
+import { GetServerSideProps } from "next";
 
-export default function index() {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const trades = await prisma.trade.findMany();
+
+  return {
+    props: {
+      trades,
+    },
+  };
+};
+
+export default function index({ trades }: { trades: Trade[] }) {
   const { contract: marketplace } = useContract(
     MUMBAI_MARKETPLACE_ADDRESS,
     "marketplace-v3"
@@ -30,8 +42,6 @@ export default function index() {
     null
   );
 
-  console.log("LISTINGS", directListings);
-
   return (
     <div>
       <Head>
@@ -43,7 +53,7 @@ export default function index() {
       <Navbar />
 
       <div
-        className='container'
+        className="container"
         style={{
           marginTop: 100,
         }}
@@ -58,43 +68,45 @@ export default function index() {
             : "Not signed in"}
           !
         </h1>
-        <div className='row' style={{ borderBottom: '1px solid grey', padding: 20 }}>
+        <div
+          className="row"
+          style={{ borderBottom: "1px solid grey", padding: 20 }}
+        >
           <div className="col-sm-2">
             <img
-              src='dp.png'
-              alt='Profile Photo'
+              src="dp.png"
+              alt="Profile Photo"
               style={{
-                width: '100%', // Adjust the size as needed
-                borderRadius: '50%', // Makes the image circular
-                marginRight: '20px', // Adds some space between the photo and the text
-                paddingBottom: '20px',
+                width: "100%", // Adjust the size as needed
+                borderRadius: "50%", // Makes the image circular
+                marginRight: "20px", // Adds some space between the photo and the text
+                paddingBottom: "20px",
               }}
             />
           </div>
 
           <div className="col-sm-10">
-            {
-              user ?
-                <div suppressHydrationWarning>
-                  <h3 suppressHydrationWarning>{user.name}</h3>
-                  <p suppressHydrationWarning>{user.email}</p>
-                  {address ? (
-                    <div>
-                      {/* {address.substring(0, 6).concat('...')}
+            {user ? (
+              <div suppressHydrationWarning>
+                <h3 suppressHydrationWarning>{user.name}</h3>
+                <p suppressHydrationWarning>{user.email}</p>
+                {address ? (
+                  <div>
+                    {/* {address.substring(0, 6).concat('...')}
                       {address.substring(address.length - 5, address.length - 1)} */}
-                      {address}
-                    </div>
-                  ) : (
-                    'Not signed in'
-                  )}
-                </div>
-                :
-                <div>
-                  <h3 suppressHydrationWarning></h3>
-                  <p suppressHydrationWarning></p>
-                  Please sign in!
-                </div>
-            }
+                    {address}
+                  </div>
+                ) : (
+                  "Not signed in"
+                )}
+              </div>
+            ) : (
+              <div>
+                <h3 suppressHydrationWarning></h3>
+                <p suppressHydrationWarning></p>
+                Please sign in!
+              </div>
+            )}
           </div>
         </div>
 
@@ -119,10 +131,12 @@ export default function index() {
               directListings?.map((listing, index) => (
                 <div className="card" key={index}>
                   <PackNFTCard
+                    ownerAddress={listing.creatorAddress}
                     contractAddress={listing.assetContractAddress}
                     tokenId={listing.tokenId}
                     status={listing.status.toString()}
-                    allowTradeAndBuy={true}
+                    disallowTradeAndBuy={true}
+                    cardsTraded={new Set(trades.map((trade) => trade.tokenId))}
                   />
                 </div>
               ))

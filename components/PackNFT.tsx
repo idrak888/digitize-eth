@@ -5,7 +5,6 @@ import {
 import {
   DirectListingV3,
   MediaRenderer,
-  NFT,
   Web3Button,
   useAddress,
   useContract,
@@ -13,12 +12,16 @@ import {
   useNFT,
 } from "@thirdweb-dev/react";
 import styles from "../styles/Home.module.css";
+import axios from "axios";
+import { Button } from "react-bootstrap";
 
 type Props = {
   contractAddress: string;
   tokenId: any;
   status?: string;
-  allowTradeAndBuy?: boolean;
+  disallowTradeAndBuy?: boolean;
+  ownerAddress: string;
+  cardsTraded: Set<string>;
 };
 
 function getListing(tokenId: string, listings?: DirectListingV3[]) {
@@ -29,10 +32,14 @@ export const PackNFTCard = ({
   contractAddress,
   tokenId,
   status,
-  allowTradeAndBuy,
+  disallowTradeAndBuy,
+  ownerAddress,
+  cardsTraded,
 }: Props) => {
   const address = useAddress();
-  console.log("TOKEN ID", tokenId);
+  const isOwner = address === ownerAddress;
+
+  const isTraded = cardsTraded.has(tokenId);
 
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
     MUMBAI_MARKETPLACE_ADDRESS,
@@ -80,6 +87,10 @@ export const PackNFTCard = ({
 
   const currentStatus = currentListing?.status;
 
+  if (!packNFT) {
+    return <p>Loading...</p>;
+  }
+
   return (
     <div className={styles.packCard}>
       {!loadingNFT && !loadingPackListings ? (
@@ -103,14 +114,37 @@ export const PackNFTCard = ({
 
             {!address ? (
               <p>Login to buy</p>
-            ) : !allowTradeAndBuy ? (
-              <Web3Button
-                isDisabled={currentStatus === 2}
-                contractAddress={MUMBAI_MARKETPLACE_ADDRESS}
-                action={buyCard}
-              >
-                Buy
-              </Web3Button>
+            ) : isOwner ? (
+              <div>Owned by You</div>
+            ) : !disallowTradeAndBuy ? (
+              <div style={{ display: "flex", flexDirection: "row", gap: 5 }}>
+                <Web3Button
+                  isDisabled={currentStatus === 2}
+                  contractAddress={MUMBAI_MARKETPLACE_ADDRESS}
+                  action={buyCard}
+                >
+                  Buy
+                </Web3Button>
+                <Button
+                  disabled={!packNFT || currentStatus === 2 || isTraded}
+                  onClick={async () => {
+                    await axios.post("/api/submitTrade", {
+                      tokenId,
+                      requestingAddress: address,
+                      ownerAddress,
+                      description:
+                        packNFT.metadata.description || "No description",
+                    });
+                    alert("Trade request sent!");
+                  }}
+                >
+                  {isTraded
+                    ? "Up for Trade"
+                    : currentStatus === 2
+                    ? "Sold"
+                    : "Trade"}
+                </Button>
+              </div>
             ) : (
               <></>
             )}

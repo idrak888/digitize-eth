@@ -12,10 +12,25 @@ model Widget {
 }
 
 model User {
-  id              String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  id              String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
   name            String
-  email           String @unique
-  walletAddress   String @unique
+  email           String  @unique
+  walletAddress   String  @unique
   physicalAddress String
   kycEsa          String
+}
+
+enum TradeStatus {
+  CREATED
+  CANCELLED
+  COMPLETED
+}
+
+model Trade {
+  id               String @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  ownerUserAddress String
+  requestingUserAddress String
+  tokenId          String
+  tokenDescription String
+  status         TradeStatus  @default(CREATED)
 }
