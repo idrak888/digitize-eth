@@ -1,7 +1,57 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 # Digitize-Eth
-This platform provides a dynamic marketplace for physical assets that are represented by NFTs. Whether you're interested in art, collectibles, you'll find a treasure trove of unique items to explore and acquire here.
+
+<img width="1330" alt="Screenshot 2023-09-17 at 4 44 59 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/f8d3ff7c-e5fc-4e11-89dc-0eec435be827">
+
+<img width="1317" alt="Screenshot 2023-09-17 at 4 45 51 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/e48adebb-0975-4af9-bb5d-41bffe270248">
+
+
+
+## Inspiration 💡
+
+Buying, selling, and trading physical collectibles can be a rather tedious task, and this has become even more apparent with the recent surge of NFTs (Non-Fungible Tokens).
+
+The global market for physical collectibles was estimated to be worth $372 billion in 2020. People have an innate inclination to collect, driving the acquisition of items such as art, games, sports memorabilia, toys, and more. However, considering the world's rapid shift towards the digital realm, there arises a question about the sustainability of this market in its current form.
+
+At its current pace, it seems inevitable that people may lose interest in physical collectibles, gravitating towards digital alternatives due to the speed and convenience of digital transactions. Nevertheless, we are here with a mission to rekindle the passion for physical collectibles.
+
+## What it does 🤖
+Our platform empowers users to transform their physical collectibles into digital assets. This not only preserves the value of their physical items but also facilitates easy buying, selling, and trading.
+
+We have the capability to digitize various collectibles with verifiable authenticity, including graded sports/trading cards, sneakers, and more.
+
+## How we built it 👷🏻‍♂️
+To construct our platform, we utilized [NEXT.js](https://nextjs.org/) for both frontend and backend development. Additionally, we harnessed the power of the [thirdweb](https://thirdweb.com/) SDK for deploying, minting, and trading NFTs. Our NFTs are deployed on the Ethereum L2 [Mumbai](https://mumbai.polygonscan.com/) testnet.
+
+- MUMBAI_DIGITIZE_ETH_ADDRESS = 0x6A80AD071932ba92fe43968DD3CaCBa989C3253f
+- MUMBAI_MARKETPLACE_ADDRESS = 0xedd39cAD84b3Be541f630CD1F5595d67bC243E78
+
+Furthermore, we incorporated the Ethereum Attestation Service to verify asset ownership and perform KYC (Know Your Customer) checks on users.
+
+- SEPOLIA_KYC_SCHEMA = 0x95f11b78d560f88d50fcc41090791bb7a7505b6b12bbecf419bfa549b0934f6d
+- SEPOLIA_KYC_TX_ID = 0x18d53b53e90d7cb9b37b2f8ae0d757d1b298baae3b5767008e2985a5894d6d2c
+- SEPOLIA_MINT_NFT_SCHEMA = 0x480a518609c381a44ca0c616157464a7d066fed748e1b9f55d54b6d51bcb53d2
+- SEPOLIA_MINT_NFT_TX_ID = 0x0358a9a9cae12ffe10513e8d06c174b1d43c5e10c3270035476d10afd9738334
+
+We also made use of CockroachDB and Prisma to manage our database.
+
+## Challenges we ran into 🏃🏻‍♂️🏃🏻‍♂️💨💨
+Our journey in the blockchain space was met with several challenges, as we were relatively new to this domain. Integrating various SDKs proved to be a formidable task. Initially, we deployed our NFTs on Sepolia, but encountered difficulties in fetching data. We suspect that thirdweb does not fully support Sepolia. Ultimately, we made a successful transition to the Mumbai network. We also faced issues with the PSA card website, as it went offline temporarily, preventing us from scraping data to populate our applications. 
+
+## Accomplishments that we're proud of 🌄
+As a team consisting of individuals new to blockchain technology, and even first-time deployers of smart contracts and NFT minting, we take pride in successfully integrating web3 SDKs into our application. We managed to deliver a functional minimum viable product within a short time frame. 🎇🎇
+
+## What we learned 👨🏻‍🎓
+Through this experience, we learned the value of teamwork and the importance of addressing challenges head-on. In moments of uncertainty, we found effective solutions through open discussions. Overall, we have gained confidence in our ability to deliver exceptional products as a team.Lastly, we learned to have fun and build things that matter to us.
+
+## What's next for digitize.eth 👀👀👀
+Our future plans include further enhancements such as:
+- Populating our platform with a range of supported NFTs for physical assets.
+- Take a leap of faith and deploy on Mainnet  
+- Deploy our NFTs on other chains, eg Solana.
+
+
 
 ## Tech Stack 
 - Frontend & Backend: [Next.js](https://nextjs.org/)
