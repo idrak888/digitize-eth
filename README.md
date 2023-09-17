@@ -2,9 +2,10 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 # Bl0ckify
 
-<img width="1330" alt="Screenshot 2023-09-17 at 4 44 59 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/f8d3ff7c-e5fc-4e11-89dc-0eec435be827">
+<img width="1613" alt="Screenshot 2023-09-17 at 6 55 23 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/02a20ea2-379a-4dfb-ad04-5ed4523af225">
 
-<img width="1317" alt="Screenshot 2023-09-17 at 4 45 51 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/e48adebb-0975-4af9-bb5d-41bffe270248">
+<img width="1624" alt="Screenshot 2023-09-17 at 6 58 30 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/9c80bde3-1c15-4c9e-9833-aaf7e3861617">
+
 
 ## Inspiration 💡
 
