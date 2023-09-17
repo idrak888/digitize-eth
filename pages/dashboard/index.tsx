@@ -20,16 +20,17 @@ export default function index() {
     "marketplace-v3"
   );
 
-  const { data: directListings } =
-    useDirectListings(marketplace, {
-      tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,
-    });
+  const { data: directListings } = useDirectListings(marketplace, {
+    tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,
+  });
 
   const address = useAddress();
   const [user, setUser] = useLocalStorage<User | null>(
     USER_LOCAL_STORAGE_KEY,
     null
   );
+
+  console.log("LISTINGS", directListings);
 
   return (
     <div>
@@ -51,9 +52,9 @@ export default function index() {
           Welcome Back,{" "}
           {address
             ? `${address.substring(0, 6)}...${address.substring(
-              address.length - 5,
-              address.length - 1
-            )}`
+                address.length - 5,
+                address.length - 1
+              )}`
             : "Not signed in"}
           !
         </h1>

@@ -3,7 +3,9 @@ import {
   MUMBAI_MARKETPLACE_ADDRESS,
 } from "../constant/addresses";
 import {
+  DirectListingV3,
   MediaRenderer,
+  NFT,
   Web3Button,
   useAddress,
   useContract,
@@ -19,6 +21,10 @@ type Props = {
   allowTradeAndBuy?: boolean;
 };
 
+function getListing(tokenId: string, listings?: DirectListingV3[]) {
+  return listings?.find((listing: any) => listing.tokenId === tokenId);
+}
+
 export const PackNFTCard = ({
   contractAddress,
   tokenId,
@@ -26,6 +32,7 @@ export const PackNFTCard = ({
   allowTradeAndBuy,
 }: Props) => {
   const address = useAddress();
+  console.log("TOKEN ID", tokenId);
 
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
     MUMBAI_MARKETPLACE_ADDRESS,
@@ -69,7 +76,9 @@ export const PackNFTCard = ({
 
   const statuses = ["", "", "SOLD", "", "AVAILABLE"];
 
-  const currentStatus = cardListings![tokenId].status;
+  const currentListing = getListing(tokenId, cardListings);
+
+  const currentStatus = currentListing?.status;
 
   return (
     <div className={styles.packCard}>
@@ -86,11 +95,11 @@ export const PackNFTCard = ({
             <h3>{packNFT?.metadata.name}</h3>
 
             <p>
-              Cost: {cardListings![tokenId].currencyValuePerToken.displayValue}{" "}
-              {` ` + cardListings![tokenId].currencyValuePerToken.symbol}
+              Cost: {currentListing?.currencyValuePerToken.displayValue}{" "}
+              {` ` + currentListing?.currencyValuePerToken.symbol}
             </p>
-            <p>Creator: {cardListings![tokenId].creatorAddress}</p>
-            {status && <p>Status: {statuses[cardListings![tokenId].status]}</p>}
+            <p>Creator: {currentListing?.creatorAddress}</p>
+            {status && <p>Status: {statuses[currentListing?.status || 2]}</p>}
 
             {!address ? (
               <p>Login to buy</p>

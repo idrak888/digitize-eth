@@ -1,24 +1,87 @@
 import { Modal, Button, Form } from "react-bootstrap";
 import React, { useState } from "react";
 import { Web3Storage } from "web3.storage";
-import axios from "axios";
 import {
+  NFT,
   Web3Button,
   useAddress,
   useContract,
+  useCreateDirectListing,
   useMintNFT,
+  useOwnedNFTs,
 } from "@thirdweb-dev/react";
-import { MUMBAI_DIGITIZE_ETH_ADDRESS } from "@/constant/addresses";
+import {
+  MATIC_NATIVE_TOKEN_ADDRESS,
+  MUMBAI_DIGITIZE_ETH_ADDRESS,
+  MUMBAI_MARKETPLACE_ADDRESS,
+} from "@/constant/addresses";
+
+
+function getCurrentNft(
+  ownedNfts?: NFT[],
+  itemName?: string,
+  psaGrade?: string,
+  certificateNumber?: string
+) {
+  if (!ownedNfts) {
+    return undefined;
+  }
+  return ownedNfts.find(
+    (nft) =>
+      nft.metadata?.description ===
+      createUniqueDescription(itemName, psaGrade, certificateNumber)
+  );
+}
 
 function constructIpfsUrl(cid: string, fileName: string) {
   return `ipfs://${cid}/${fileName}`;
 }
 
+function createUniqueDescription(
+  itemName?: string,
+  psaGrade?: string,
+  certificateNumber?: string
+) {
+  return `${itemName || ""} - ${psaGrade || ""} - #${certificateNumber || ""}`;
+}
+
+enum LoadingStage {
+  REQUESTED, // 0%
+  VERIFIED, // 33%
+  MINTED, // 66%
+  LISTED, // 100%
+}
+
 export default function MintButton() {
   const address = useAddress();
-  const { contract } = useContract(MUMBAI_DIGITIZE_ETH_ADDRESS, "edition");
-  const { mutateAsync: mintNft, isLoading, error } = useMintNFT(contract);
+  const { contract: marketplaceContract } = useContract(
+    MUMBAI_MARKETPLACE_ADDRESS,
+    "marketplace-v3"
+  );
+  const { contract: nftContract } = useContract(
+    MUMBAI_DIGITIZE_ETH_ADDRESS,
+    "edition"
+  );
+
+  const {
+    mutateAsync: mintNft,
+    isLoading: mintLoading,
+    error: mintError,
+  } = useMintNFT(nftContract);
+
+  const {
+    data: ownedNfts,
+    isLoading: ownedNftsLoading,
+    error: ownedNftsError,
+  } = useOwnedNFTs(nftContract, address);
+
+  const {
+    mutateAsync: createDirectListing,
+    isLoading: createDirectListingLoading,
+    error: createDirectListingError,
+  } = useCreateDirectListing(marketplaceContract);
   const [show, setShow] = useState(false);
+  const [loadingStage, setLoadingStage] = useState<LoadingStage | null>(null);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -31,10 +94,17 @@ export default function MintButton() {
   const [file, setFile] = useState<File | null>(null);
   const [cid, setCid] = useState<string | null>(null);
 
-  const [itemName, setItemName] = useState<string | null>(null);
-  const [psaGrade, setPsaGrade] = useState<string | null>(null);
-  const [certificateNumber, setCertificateNumber] = useState<string | null>(
-    null
+  const [itemName, setItemName] = useState<string | undefined>(undefined);
+  const [psaGrade, setPsaGrade] = useState<string | undefined>(undefined);
+  const [certificateNumber, setCertificateNumber] = useState<
+    string | undefined
+  >(undefined);
+
+  const currentNft = getCurrentNft(
+    ownedNfts,
+    itemName,
+    psaGrade,
+    certificateNumber
   );
 
   // Handle file input change
@@ -123,38 +193,90 @@ export default function MintButton() {
             variant="secondary"
             onClick={() => {
               handleClose();
-              setItemName(null);
-              setPsaGrade(null);
-              setCertificateNumber(null);
+              setItemName(undefined);
+              setPsaGrade(undefined);
+              setCertificateNumber(undefined);
               setFile(null);
               setCid(null);
             }}
           >
             Cancel
           </Button>
-          <Web3Button
-            contractAddress={MUMBAI_DIGITIZE_ETH_ADDRESS}
-            isDisabled={!file || !itemName || !psaGrade || !address}
-            action={async () => {
-              if (!address) {
-                alert("Please connect your wallet");
-                return;
-              }
-
-              await mintNft({
-                metadata: {
-                  name: `[${certificateNumber}] ${itemName}`,
-                  description: `${itemName} - ${psaGrade} - #${certificateNumber}`,
-                  image: file, // Accepts any URL or File type
-                },
-                supply: 1,
-                to: address, // disabled if address is undefined
-              });
-              handleClose();
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 5,
             }}
           >
-            Submit
-          </Web3Button>
+            <Web3Button
+              contractAddress={MUMBAI_DIGITIZE_ETH_ADDRESS}
+              isDisabled={!file || !itemName || !psaGrade || !address}
+              action={async () => {
+                if (!address) {
+                  alert("Please connect your wallet");
+                  return;
+                }
+
+                // Step 1: Verify w Computer Vision
+                setLoadingStage(LoadingStage.REQUESTED);
+                setTimeout(async () => {
+                  setLoadingStage(LoadingStage.VERIFIED);
+                  await mintNft({
+                    metadata: {
+                      name: `[${certificateNumber}] ${itemName}`,
+                      description: createUniqueDescription(
+                        itemName,
+                        psaGrade,
+                        certificateNumber
+                      ),
+                      image: file, // Accepts any URL or File type
+                    },
+                    supply: 1,
+                    to: address, // disabled if address is undefined
+                  });
+
+                  console.log("Minted, now list it on the marketplace");
+                  setLoadingStage(LoadingStage.MINTED);
+                }, 1200);
+              }}
+            >
+              {loadingStage === null
+                ? "1. Submit"
+                : loadingStage === LoadingStage.REQUESTED
+                ? "Verifying"
+                : loadingStage === LoadingStage.VERIFIED
+                ? "Minting"
+                : "Minted"}
+            </Web3Button>
+            <Web3Button
+              isDisabled={
+                !currentNft || !address || loadingStage !== LoadingStage.MINTED
+              }
+              contractAddress={MUMBAI_MARKETPLACE_ADDRESS}
+              action={async () => {
+                if (!currentNft?.metadata) {
+                  alert("Something went wrong, please try minting again");
+                  return;
+                }
+                await createDirectListing({
+                  assetContractAddress: MUMBAI_DIGITIZE_ETH_ADDRESS,
+                  tokenId: currentNft.metadata.id,
+                  pricePerToken: "0.5",
+                  quantity: "1",
+                  startTimestamp: new Date(),
+                  endTimestamp: new Date(
+                    new Date().getTime() + 7 * 24 * 60 * 60 * 1000 // 7 days
+                  ),
+                });
+
+                setLoadingStage(LoadingStage.LISTED);
+                handleClose();
+              }}
+            >
+              {loadingStage === LoadingStage.LISTED ? "Listed" : "2. List"}
+            </Web3Button>
+          </div>
         </Modal.Footer>
       </Modal>
       <button
