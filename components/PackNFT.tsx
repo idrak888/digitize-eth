@@ -15,9 +15,10 @@ import styles from '../styles/Home.module.css';
 type Props = {
   contractAddress: string;
   tokenId: any;
+  status?: string;
 };
 
-export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
+export const PackNFTCard = ({ contractAddress, tokenId, status }: Props) => {
   const address = useAddress();
 
   const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
@@ -50,6 +51,8 @@ export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
     return txResult;
   }
 
+  const statuses = ['', '', 'SOLD', '', 'AVAILABLE'];
+
   return (
     <div className={styles.packCard}>
       {!loadingNFT && !loadingPackListings ? (
@@ -65,6 +68,8 @@ export const PackNFTCard = ({ contractAddress, tokenId }: Props) => {
               {` ` + cardListings![tokenId].currencyValuePerToken.symbol}
             </p>
             <p>Creator: {cardListings![tokenId].creatorAddress}</p>
+            {status && <p>Status: {statuses[cardListings![tokenId].status]}</p>}
+
             {!address ? (
               <p>Login to buy</p>
             ) : (

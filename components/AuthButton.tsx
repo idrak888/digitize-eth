@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { User } from '@prisma/client';
 import { Modal, Button, Form } from 'react-bootstrap';
-import { SEPOLIA_KYC_TX_ID } from '@/constant/addresses';
 
 export default function AuthButton() {
   const walletInstance = useWallet();
