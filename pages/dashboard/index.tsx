@@ -51,9 +51,9 @@ export default function index() {
           Welcome Back,{" "}
           {address
             ? `${address.substring(0, 6)}...${address.substring(
-                address.length - 5,
-                address.length - 1
-              )}`
+              address.length - 5,
+              address.length - 1
+            )}`
             : "Not signed in"}
           !
         </h1>
@@ -106,7 +106,7 @@ export default function index() {
                       contractAddress={listing.assetContractAddress}
                       tokenId={listing.tokenId}
                       status={listing.status.toString()}
-                      hideBtn={true}
+                      allowTradeAndBuy={true}
                     />
                   </div>
                 ))

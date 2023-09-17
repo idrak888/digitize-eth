@@ -16,14 +16,14 @@ type Props = {
   contractAddress: string;
   tokenId: any;
   status?: string;
-  hideBtn?: boolean;
+  allowTradeAndBuy?: boolean;
 };
 
 export const PackNFTCard = ({
   contractAddress,
   tokenId,
   status,
-  hideBtn,
+  allowTradeAndBuy,
 }: Props) => {
   const address = useAddress();
 
@@ -94,7 +94,7 @@ export const PackNFTCard = ({
 
             {!address ? (
               <p>Login to buy</p>
-            ) : !hideBtn ? (
+            ) : !allowTradeAndBuy ? (
               <Web3Button
                 isDisabled={currentStatus === 2}
                 contractAddress={MUMBAI_MARKETPLACE_ADDRESS}
