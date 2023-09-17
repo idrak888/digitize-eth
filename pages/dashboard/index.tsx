@@ -43,7 +43,7 @@ export default function index() {
       <Navbar />
 
       <div
-        className="container"
+        className='container'
         style={{
           marginTop: 100,
         }}
@@ -61,27 +61,53 @@ export default function index() {
         <div
           className="row"
           style={{
-            borderBottom: "1px solid grey",
-            padding: 20,
+            fontSize: 30,
+            fontWeight: 'bold',
+            marginLeft: 20,
           }}
         >
-          <div>
-            {address ? (
-              <div
-                style={{
-                  backgroundColor: "#111111",
-                  padding: 20,
-                  borderRadius: 12,
-                }}
-              >
-                {address.substring(0, 6).concat("...")}
-                {address.substring(address.length - 5, address.length - 1)}
-              </div>
-            ) : (
-              "Not signed in"
-            )}
+          Welcome Back!
+        </div>
+        <div className='row' style={{ borderBottom: '1px solid grey', padding: 20 }}>
+          <div className="col-sm-2">
+            <img
+              src='dp.png'
+              alt='Profile Photo'
+              style={{
+                width: '100%', // Adjust the size as needed
+                borderRadius: '50%', // Makes the image circular
+                marginRight: '20px', // Adds some space between the photo and the text
+                paddingBottom: '20px',
+              }}
+            />
+          </div>
+
+          <div className="col-sm-10">
+            {
+              user ?
+                <div suppressHydrationWarning>
+                  <h3 suppressHydrationWarning>{user.name}</h3>
+                  <p suppressHydrationWarning>{user.email}</p>
+                  {address ? (
+                    <div>
+                      {/* {address.substring(0, 6).concat('...')}
+                      {address.substring(address.length - 5, address.length - 1)} */}
+                      {address}
+                    </div>
+                  ) : (
+                    'Not signed in'
+                  )}
+                </div>
+                :
+                <div>
+                  <h3 suppressHydrationWarning></h3>
+                  <p suppressHydrationWarning></p>
+                  Please sign in!
+                </div>
+            }
           </div>
         </div>
+
         <div
           className="row"
           style={{
@@ -98,23 +124,21 @@ export default function index() {
             <h4>Your Items</h4>
             <MintButton />
           </div>
-          <div>
-            <div>
-              {!!directListings ? (
-                directListings?.map((listing, index) => (
-                  <div className="card" key={index}>
-                    <PackNFTCard
-                      contractAddress={listing.assetContractAddress}
-                      tokenId={listing.tokenId}
-                      status={listing.status.toString()}
-                      allowTradeAndBuy={true}
-                    />
-                  </div>
-                ))
-              ) : (
-                <Loading />
-              )}
-            </div>
+          <div className="row">
+            {!!directListings ? (
+              directListings?.map((listing, index) => (
+                <div className="card" key={index}>
+                  <PackNFTCard
+                    contractAddress={listing.assetContractAddress}
+                    tokenId={listing.tokenId}
+                    status={listing.status.toString()}
+                    allowTradeAndBuy={true}
+                  />
+                </div>
+              ))
+            ) : (
+              <Loading />
+            )}
           </div>
         </div>
       </div>

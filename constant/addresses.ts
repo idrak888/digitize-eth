@@ -14,3 +14,11 @@ export const SEPOLIA_KYC_SCHEMA =
 export const SEPOLIA_KYC_TX_ID =
   "0x18d53b53e90d7cb9b37b2f8ae0d757d1b298baae3b5767008e2985a5894d6d2c";
 // https://sepolia.easscan.org/attestation/view/0x18d53b53e90d7cb9b37b2f8ae0d757d1b298baae3b5767008e2985a5894d6d2c
+
+export const SEPOLIA_MINT_SCHEMA =
+  '0x480a518609c381a44ca0c616157464a7d066fed748e1b9f55d54b6d51bcb53d2';
+// https://sepolia.easscan.org/schema/view/0x480a518609c381a44ca0c616157464a7d066fed748e1b9f55d54b6d51bcb53d2
+export const SEPOLIA_MINT_TX_ID =
+  '0x0358a9a9cae12ffe10513e8d06c174b1d43c5e10c3270035476d10afd9738334';
+// Example
+// https://sepolia.easscan.org/attestation/view/0x0358a9a9cae12ffe10513e8d06c174b1d43c5e10c3270035476d10afd9738334

@@ -1,6 +1,7 @@
 import { Modal, Button, Form } from "react-bootstrap";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import React, { useState } from "react";
-import { Web3Storage } from "web3.storage";
 import {
   NFT,
   Web3Button,
@@ -11,11 +12,10 @@ import {
   useOwnedNFTs,
 } from "@thirdweb-dev/react";
 import {
-  MATIC_NATIVE_TOKEN_ADDRESS,
   MUMBAI_DIGITIZE_ETH_ADDRESS,
   MUMBAI_MARKETPLACE_ADDRESS,
+  SEPOLIA_MINT_TX_ID,
 } from "@/constant/addresses";
-
 
 function getCurrentNft(
   ownedNfts?: NFT[],
@@ -33,9 +33,6 @@ function getCurrentNft(
   );
 }
 
-function constructIpfsUrl(cid: string, fileName: string) {
-  return `ipfs://${cid}/${fileName}`;
-}
 
 function createUniqueDescription(
   itemName?: string,
@@ -65,20 +62,14 @@ export default function MintButton() {
 
   const {
     mutateAsync: mintNft,
-    isLoading: mintLoading,
-    error: mintError,
   } = useMintNFT(nftContract);
 
   const {
     data: ownedNfts,
-    isLoading: ownedNftsLoading,
-    error: ownedNftsError,
   } = useOwnedNFTs(nftContract, address);
 
   const {
     mutateAsync: createDirectListing,
-    isLoading: createDirectListingLoading,
-    error: createDirectListingError,
   } = useCreateDirectListing(marketplaceContract);
   const [show, setShow] = useState(false);
   const [loadingStage, setLoadingStage] = useState<LoadingStage | null>(null);
@@ -86,10 +77,6 @@ export default function MintButton() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // Create a new Web3Storage instance with your API token
-  const client = new Web3Storage({
-    token: process.env.NEXT_PUBLIC_WEB3_STORAGE_KEY || "",
-  });
   // Use state hooks to store the file, CID, and URL
   const [file, setFile] = useState<File | null>(null);
   const [cid, setCid] = useState<string | null>(null);
@@ -119,26 +106,6 @@ export default function MintButton() {
     }
   };
 
-  // Handle file upload button click
-  const handleUpload = async () => {
-    if (file) {
-      try {
-        // Upload the file to IPFS and get the CID
-        const cid = await client.put([file], {
-          name: file.name,
-          maxRetries: 3,
-        });
-        // Set the CID state
-        setCid(cid);
-
-        // Get the URL for the file from the CID
-        return constructIpfsUrl(cid, file.name);
-      } catch (error) {
-        // Handle any errors
-        console.error(error);
-      }
-    }
-  };
 
   return (
     <div>
@@ -222,6 +189,7 @@ export default function MintButton() {
                 setLoadingStage(LoadingStage.REQUESTED);
                 setTimeout(async () => {
                   setLoadingStage(LoadingStage.VERIFIED);
+
                   await mintNft({
                     metadata: {
                       name: `[${certificateNumber}] ${itemName}`,
@@ -247,7 +215,7 @@ export default function MintButton() {
                 ? "Verifying"
                 : loadingStage === LoadingStage.VERIFIED
                 ? "Minting"
-                : "Minted"}
+                : "Minted!"}
             </Web3Button>
             <Web3Button
               isDisabled={
@@ -271,6 +239,7 @@ export default function MintButton() {
                 });
 
                 setLoadingStage(LoadingStage.LISTED);
+                console.log("Minted NFT-ESA: " + SEPOLIA_MINT_TX_ID);
                 handleClose();
               }}
             >

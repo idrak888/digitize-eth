@@ -35,7 +35,7 @@ export default function MarketPlace() {
         }}
       >
         <h4>Marketplace</h4>
-        <div className="mt-2">
+        <div className="row mt-2">
           {!!directListings ? (
             directListings
               ?.filter((listing) => listing.status === 4)
