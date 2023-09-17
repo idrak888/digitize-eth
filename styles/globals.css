@@ -132,9 +132,10 @@ a {
 .card {
   background-color: rgb(0, 0, 0);
   border: 1px solid grey;
-  margin: 20px;
+  display: block;
+  margin: 20px auto;
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   padding: 20px;
   color: white;
   border-radius: 20px;

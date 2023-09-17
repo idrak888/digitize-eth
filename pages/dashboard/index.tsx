@@ -24,6 +24,7 @@ export default function index() {
       tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,
     }
   );
+  console.log('DirectPack', directListings);
 
   const address = useAddress();
   const [user, setUser] = useLocalStorage<User | null>(
@@ -44,18 +45,18 @@ export default function index() {
       <div
         className="container"
         style={{
-          marginTop: 100,
+          marginTop: 100
         }}
       >
-        <h1
-          style={{
-            fontSize: 30,
-            fontWeight: "bold",
-            marginLeft: 20,
-          }}
-          suppressHydrationWarning
-        >
-          Welcome Back
+        <h1 style={{ fontSize: 30, fontWeight: 'bold', marginLeft: 20 }}>
+          Welcome Back,{' '}
+          {address
+            ? `${address.substring(0, 6)}...${address.substring(
+                address.length - 5,
+                address.length - 1
+              )}`
+            : 'Not signed in'}
+          !
         </h1>
         <div
           className="row"
@@ -89,38 +90,6 @@ export default function index() {
         >
           <div
             style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <h4>Your Items</h4>
-              <MintButton />
-            </div>
-          </div>
-          <div>
-            <div>
-              {!!directListings ? (
-                directListings?.map((listing, index) => (
-                  <div className="card" key={index}>
-                    <PackNFTCard
-                      contractAddress={listing.assetContractAddress}
-                      tokenId={listing.tokenId}
-                      status={listing.status.toString()}
-                    />
-                  </div>
-                ))
-              ) : (
-                <p>Loading...</p>
-              )}
-            </div>
               display: 'flex',
               flexDirection: 'row',
               alignItems: 'center',
@@ -129,23 +98,23 @@ export default function index() {
             <h4>Your Items</h4>
             <MintButton />
           </div>
-          <div style={{
-            width: "100%"
-          }}>
-            {!!directListings ? (
-              directListings?.map((listing, index) => (
-                <div className='card' key={index}>
-                  <PackNFTCard
-                    contractAddress={listing.assetContractAddress}
-                    tokenId={listing.tokenId}
-                    status={listing.status}
-                    hideBtn={true}
-                  />
-                </div>
-              ))
-            ) : (
-              <p>Loading...</p>
-            )}
+          <div>
+            <div>
+              {!!directListings ? (
+                directListings?.map((listing, index) => (
+                  <div className='card' key={index}>
+                    <PackNFTCard
+                      contractAddress={listing.assetContractAddress}
+                      tokenId={listing.tokenId}
+                      status={listing.status}
+                      hideBtn={true}
+                    />
+                  </div>
+                ))
+              ) : (
+                <p>Loading...</p>
+              )}
+            </div>
           </div>
         </div>
       </div>
