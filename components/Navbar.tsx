@@ -54,6 +54,15 @@ export default function Navbar() {
                 Profile
               </a>
             </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                style={{ fontWeight: "bold" }}
+                href="/trades"
+              >
+                Trades
+              </a>
+            </li>
           </ul>
           <form className="d-flex">
             <AuthButton />

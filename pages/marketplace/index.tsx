@@ -1,15 +1,27 @@
-import { Status, useContract, useDirectListings } from "@thirdweb-dev/react";
+import { useContract, useDirectListings } from "@thirdweb-dev/react";
 import {
   MUMBAI_DIGITIZE_ETH_ADDRESS,
   MUMBAI_MARKETPLACE_ADDRESS,
 } from "../../constant/addresses";
-import styles from "../../styles/Home.module.css";
 import { PackNFTCard } from "../../components/PackNFT";
 import Navbar from "@/components/Navbar";
 import Head from "next/head";
 import Loading from "@/components/Loading";
+import { GetServerSideProps } from "next";
+import prisma from "@/lib/prisma";
+import { Trade } from "@prisma/client";
 
-export default function MarketPlace() {
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const trades = await prisma.trade.findMany();
+
+  return {
+    props: {
+      trades: trades || [],
+    },
+  };
+};
+
+export default function MarketPlace({ trades }: { trades: Trade[] }) {
   const { contract: marketplace } = useContract(
     MUMBAI_MARKETPLACE_ADDRESS,
     "marketplace-v3"
@@ -44,8 +56,10 @@ export default function MarketPlace() {
                   <PackNFTCard
                     contractAddress={listing.assetContractAddress}
                     tokenId={listing.tokenId}
-                    allowTradeAndBuy={false}
+                    disallowTradeAndBuy={false}
+                    ownerAddress={listing.creatorAddress}
                     status={listing.status.toString()}
+                    cardsTraded={new Set(trades.map((trade) => trade.tokenId))}
                   />
                 </div>
               ))
