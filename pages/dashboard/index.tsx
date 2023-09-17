@@ -1,38 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, {  } from "react";
 import {
-  Web3Button,
   useContract,
   useDirectListings,
-  useWallet,
 } from "@thirdweb-dev/react";
 import MintButton from "@/components/MintButton";
 import {
   MUMBAI_DIGITIZE_ETH_ADDRESS,
   MUMBAI_MARKETPLACE_ADDRESS,
 } from "@/constant/addresses";
-import { PackNFTCard } from "@/components/PackNFT";
 import { useAddress } from "@thirdweb-dev/react";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
 import { useLocalStorage } from "usehooks-ts";
-import { Trade, User } from "@prisma/client";
+import { User } from "@prisma/client";
 import { USER_LOCAL_STORAGE_KEY } from "@/config";
 import Loading from "@/components/Loading";
 import { PersonalNFTCard } from "@/components/PersonalNFT";
-import prisma from "@/lib/prisma";
-import { GetServerSideProps } from "next";
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const trades = await prisma.trade.findMany();
-
-  return {
-    props: {
-      trades,
-    },
-  };
-};
-
-export default function index({ trades }: { trades: Trade[] }) {
+export default function index() {
   const { contract: marketplace } = useContract(
     MUMBAI_MARKETPLACE_ADDRESS,
     "marketplace-v3"
