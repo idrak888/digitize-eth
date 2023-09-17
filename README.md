@@ -6,8 +6,6 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 <img width="1317" alt="Screenshot 2023-09-17 at 4 45 51 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/e48adebb-0975-4af9-bb5d-41bffe270248">
 
-
-
 ## Inspiration 💡
 
 Buying, selling, and trading physical collectibles can be a rather tedious task, and this has become even more apparent with the recent surge of NFTs (Non-Fungible Tokens).
@@ -17,11 +15,13 @@ The global market for physical collectibles was estimated to be worth $372 billi
 At its current pace, it seems inevitable that people may lose interest in physical collectibles, gravitating towards digital alternatives due to the speed and convenience of digital transactions. Nevertheless, we are here with a mission to rekindle the passion for physical collectibles.
 
 ## What it does 🤖
+
 Our platform empowers users to transform their physical collectibles into digital assets. This not only preserves the value of their physical items but also facilitates easy buying, selling, and trading.
 
 We have the capability to digitize various collectibles with verifiable authenticity, including graded sports/trading cards, sneakers, and more.
 
 ## How we built it 👷🏻‍♂️
+
 To construct our platform, we utilized [NEXT.js](https://nextjs.org/) for both frontend and backend development. Additionally, we harnessed the power of the [thirdweb](https://thirdweb.com/) SDK for deploying, minting, and trading NFTs. Our NFTs are deployed on the Ethereum L2 [Mumbai](https://mumbai.polygonscan.com/) testnet.
 
 - MUMBAI_DIGITIZE_ETH_ADDRESS = 0x6A80AD071932ba92fe43968DD3CaCBa989C3253f
@@ -37,27 +37,31 @@ Furthermore, we incorporated the Ethereum Attestation Service to verify asset ow
 We also made use of CockroachDB and Prisma to manage our database.
 
 ## Challenges we ran into 🏃🏻‍♂️🏃🏻‍♂️💨💨
-Our journey in the blockchain space was met with several challenges, as we were relatively new to this domain. Integrating various SDKs proved to be a formidable task. Initially, we deployed our NFTs on Sepolia, but encountered difficulties in fetching data. We suspect that thirdweb does not fully support Sepolia. Ultimately, we made a successful transition to the Mumbai network. We also faced issues with the PSA card website, as it went offline temporarily, preventing us from scraping data to populate our applications. 
+
+Our journey in the blockchain space was met with several challenges, as we were relatively new to this domain. Integrating various SDKs proved to be a formidable task. Initially, we deployed our NFTs on Sepolia, but encountered difficulties in fetching data. We suspect that thirdweb does not fully support Sepolia. Ultimately, we made a successful transition to the Mumbai network. We also faced issues with the PSA card website, as it went offline temporarily, preventing us from scraping data to populate our applications.
 
 ## Accomplishments that we're proud of 🌄
+
 As a team consisting of individuals new to blockchain technology, and even first-time deployers of smart contracts and NFT minting, we take pride in successfully integrating web3 SDKs into our application. We managed to deliver a functional minimum viable product within a short time frame. 🎇🎇
 
 ## What we learned 👨🏻‍🎓
+
 Through this experience, we learned the value of teamwork and the importance of addressing challenges head-on. In moments of uncertainty, we found effective solutions through open discussions. Overall, we have gained confidence in our ability to deliver exceptional products as a team.Lastly, we learned to have fun and build things that matter to us.
 
-## What's next for digitize.eth 👀👀👀
+## What's next for Bl0ckify 👀👀👀
+
 Our future plans include further enhancements such as:
+
 - Populating our platform with a range of supported NFTs for physical assets.
 - Take a leap of faith and deploy on Mainnet  
 - Deploy our NFTs on other chains, eg Solana.
 
+## Tech Stack
 
-
-## Tech Stack 
 - Frontend & Backend: [Next.js](https://nextjs.org/)
 - Web3 Framework: [ThirdWeb](https://thirdweb.com/)
   - Walletconnect feature
-- Ethereum Attestation Serivce: [ESA](https://attest.sh/) 
+- Ethereum Attestation Serivce: [ESA](https://attest.sh/)
   - This is used to KYC new users and verify the authenticity of the physical asset.
 
 ## Getting Started

@@ -21,7 +21,7 @@ export default function Navbar() {
           href="/"
         >
           <img width={46} src={"/logo.png"} />
-          Digitize.eth
+          Bl0ckify
         </a>
         <button
           className="navbar-toggler"
