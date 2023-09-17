@@ -5,7 +5,6 @@ import {
 import {
   DirectListingV3,
   MediaRenderer,
-  NFT,
   Web3Button,
   useAddress,
   useBurnNFT,
@@ -14,14 +13,12 @@ import {
   useNFT,
 } from '@thirdweb-dev/react';
 import styles from '../styles/Home.module.css';
-import { useState } from 'react';
-import { Alert, Button } from 'react-bootstrap';
 
 type Props = {
   contractAddress: string;
   tokenId: any;
   status?: string;
-  allowTradeAndBuy?: boolean;
+  disallowTradeAndBuy?: boolean;
 };
 
 function getListing(tokenId: string, listings?: DirectListingV3[]) {
@@ -32,7 +29,7 @@ export const PersonalNFTCard = ({
   contractAddress,
   tokenId,
   status,
-  allowTradeAndBuy,
+  disallowTradeAndBuy,
 }: Props) => {
   const address = useAddress();
   console.log('TOKEN ID', tokenId);
@@ -104,7 +101,7 @@ export const PersonalNFTCard = ({
 
             {!address ? (
               <p>Login to burn NFT</p>
-            ) : !allowTradeAndBuy ? (
+            ) : !disallowTradeAndBuy ? (
               currentStatus !== 2 && (
                 <>
                   <Web3Button
