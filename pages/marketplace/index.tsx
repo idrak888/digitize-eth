@@ -9,12 +9,12 @@ import Navbar from '@/components/Navbar';
 import Head from 'next/head';
 
 export default function MarketPlace() {
-  const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
+  const { contract: marketplace } = useContract(
     MUMBAI_MARKETPLACE_ADDRESS,
     'marketplace-v3'
   );
 
-  const { data: directListings, isLoading: loadingDirectListings } = useDirectListings(
+  const { data: directListings } = useDirectListings(
     marketplace,
     {
       tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,

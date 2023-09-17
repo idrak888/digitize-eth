@@ -1,11 +1,17 @@
-import { ConnectWallet, useWallet } from "@thirdweb-dev/react";
+import { ConnectWallet, useAddress, useWallet } from "@thirdweb-dev/react";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { User } from "@prisma/client";
 import { Modal, Button, Form } from "react-bootstrap";
+import { useLocalStorage } from "usehooks-ts";
+import { USER_LOCAL_STORAGE_KEY } from "@/config";
 
 export default function AuthButton() {
-  const walletInstance = useWallet();
+  const walletAddress = useAddress();
+  const [user, setUser] = useLocalStorage<User | null>(
+    USER_LOCAL_STORAGE_KEY,
+    null
+  );
 
   const [show, setShow] = useState(false);
 
@@ -13,30 +19,15 @@ export default function AuthButton() {
   const handleShow = () => setShow(true);
 
   // States
-  const [walletAddress, setWalletAddress] = useState("");
   const [name, setName] = useState("");
   const [physicalAddress, setPhysicalAddress] = useState("");
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    async function getWalletInfo() {
-      if (walletInstance) {
-        const address = await walletInstance.getAddress();
-        if (!address) {
-          return;
-        }
-        setWalletAddress(address);
-      }
+    if (!walletAddress) {
+      return;
     }
-    getWalletInfo();
-  }, [walletInstance]);
-
-  useEffect(() => {
     async function getUserInfo() {
-      if (!walletAddress) {
-        return;
-      }
-
       // Make API call to get user info if it exists
       const res = await axios.post<User | null>("/api/auth/getUser", {
         walletAddress,
@@ -48,6 +39,9 @@ export default function AuthButton() {
         setName(user.name);
         setPhysicalAddress(user.physicalAddress);
         setEmail(user.email);
+        setUser({
+          ...user,
+        });
       } else {
         handleShow();
       }
