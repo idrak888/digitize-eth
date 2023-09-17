@@ -1,21 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useContract, useDirectListings } from "@thirdweb-dev/react";
+import MintButton from "@/components/MintButton";
+import {
+  MUMBAI_DIGITIZE_ETH_ADDRESS,
+  MUMBAI_MARKETPLACE_ADDRESS,
+} from "@/constant/addresses";
+import { PackNFTCard } from "@/components/PackNFT";
 import { useAddress } from "@thirdweb-dev/react";
 import Head from "next/head";
 import Navbar from "@/components/Navbar";
-import MintButton from "@/components/MintButton";
 import { useLocalStorage } from "usehooks-ts";
 import { User } from "@prisma/client";
 import { USER_LOCAL_STORAGE_KEY } from "@/config";
 
-
 export default function index() {
+  const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
+    MUMBAI_MARKETPLACE_ADDRESS,
+    "marketplace-v3"
+  );
+
+  const { data: directListings, isLoading: loadingDirectListings } =
+    useDirectListings(marketplace, {
+      tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,
+    });
+  console.log("DirectPack", directListings);
+
   const address = useAddress();
   const [user, setUser] = useLocalStorage<User | null>(
     USER_LOCAL_STORAGE_KEY,
     null
   );
-
-
 
   return (
     <div>
@@ -80,7 +94,33 @@ export default function index() {
               alignItems: "center",
             }}
           >
-            <h4>Your Items</h4> <MintButton />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <h4>Your Items</h4>
+              <MintButton />
+            </div>
+          </div>
+          <div>
+            <div>
+              {!!directListings ? (
+                directListings?.map((listing, index) => (
+                  <div className="card" key={index}>
+                    <PackNFTCard
+                      contractAddress={listing.assetContractAddress}
+                      tokenId={listing.tokenId}
+                      status={listing.status.toString()}
+                    />
+                  </div>
+                ))
+              ) : (
+                <p>Loading...</p>
+              )}
+            </div>
           </div>
         </div>
       </div>

@@ -9,8 +9,6 @@ export default async function handler(
     // Given wallet address, return user
     const { walletAddress } = req.body;
 
-    console.log("walletAddress", walletAddress);
-
     if (!walletAddress) {
       return res.status(200).json(null);
     }
