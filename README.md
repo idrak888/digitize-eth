@@ -66,7 +66,7 @@ Our future plans include further enhancements such as:
 - Frontend & Backend: [Next.js](https://nextjs.org/)
 - Web3 Framework: [ThirdWeb](https://thirdweb.com/)
   - Walletconnect feature
-- Ethereum Attestation Serivce: [ESA](https://attest.sh/)
+- Ethereum Attestation Serivce: [EAS](https://attest.sh/)
   - This is used to KYC new users and verify the authenticity of the physical asset.
 
 ## Getting Started
