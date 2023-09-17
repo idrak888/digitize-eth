@@ -7,5 +7,12 @@ export const MUMBAI_MARKETPLACE_ADDRESS = '0xedd39cAD84b3Be541f630CD1F5595d67bC2
 export const SEPOLIA_KYC_SCHEMA =
   '0x95f11b78d560f88d50fcc41090791bb7a7505b6b12bbecf419bfa549b0934f6d';
 export const SEPOLIA_KYC_TX_ID =
-  '0x18d53b53e90d7cb9b37b2f8ae0d757d1b298baae3b5767008e2985a5894d6d2c'; 
+  '0x18d53b53e90d7cb9b37b2f8ae0d757d1b298baae3b5767008e2985a5894d6d2c';
 // https://sepolia.easscan.org/attestation/view/0x18d53b53e90d7cb9b37b2f8ae0d757d1b298baae3b5767008e2985a5894d6d2c
+export const SEPOLIA_MINT_SCHEMA =
+  '0x480a518609c381a44ca0c616157464a7d066fed748e1b9f55d54b6d51bcb53d2';
+// https://sepolia.easscan.org/schema/view/0x480a518609c381a44ca0c616157464a7d066fed748e1b9f55d54b6d51bcb53d2
+export const SEPOLIA_MINT_TX_ID =
+  '0x0358a9a9cae12ffe10513e8d06c174b1d43c5e10c3270035476d10afd9738334';
+// Example
+// https://sepolia.easscan.org/attestation/view/0x0358a9a9cae12ffe10513e8d06c174b1d43c5e10c3270035476d10afd9738334

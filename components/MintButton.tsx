@@ -1,14 +1,11 @@
-import { Modal, Button, Form } from "react-bootstrap";
-import React, { useState } from "react";
-import { Web3Storage } from "web3.storage";
-import axios from "axios";
-import {
-  Web3Button,
-  useAddress,
-  useContract,
-  useMintNFT,
-} from "@thirdweb-dev/react";
-import { MUMBAI_DIGITIZE_ETH_ADDRESS } from "@/constant/addresses";
+import { Modal, Button, Form } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Web3Storage } from 'web3.storage';
+import axios from 'axios';
+import { Web3Button, useAddress, useContract, useMintNFT } from '@thirdweb-dev/react';
+import { MUMBAI_DIGITIZE_ETH_ADDRESS, SEPOLIA_MINT_TX_ID } from '@/constant/addresses';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function constructIpfsUrl(cid: string, fileName: string) {
   return `ipfs://${cid}/${fileName}`;
@@ -16,7 +13,7 @@ function constructIpfsUrl(cid: string, fileName: string) {
 
 export default function MintButton() {
   const address = useAddress();
-  const { contract } = useContract(MUMBAI_DIGITIZE_ETH_ADDRESS, "edition");
+  const { contract } = useContract(MUMBAI_DIGITIZE_ETH_ADDRESS, 'edition');
   const { mutateAsync: mintNft, isLoading, error } = useMintNFT(contract);
   const [show, setShow] = useState(false);
 
@@ -25,7 +22,7 @@ export default function MintButton() {
 
   // Create a new Web3Storage instance with your API token
   const client = new Web3Storage({
-    token: process.env.NEXT_PUBLIC_WEB3_STORAGE_KEY || "",
+    token: process.env.NEXT_PUBLIC_WEB3_STORAGE_KEY || '',
   });
   // Use state hooks to store the file, CID, and URL
   const [file, setFile] = useState<File | null>(null);
@@ -33,9 +30,7 @@ export default function MintButton() {
 
   const [itemName, setItemName] = useState<string | null>(null);
   const [psaGrade, setPsaGrade] = useState<string | null>(null);
-  const [certificateNumber, setCertificateNumber] = useState<string | null>(
-    null
-  );
+  const [certificateNumber, setCertificateNumber] = useState<string | null>(null);
 
   // Handle file input change
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -70,13 +65,15 @@ export default function MintButton() {
     }
   };
 
+  const notify = () => toast('Minted NFT-ESA: ' + SEPOLIA_MINT_TX_ID);
+
   return (
     <div>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header
           closeButton
           style={{
-            backgroundColor: "#080808",
+            backgroundColor: '#080808',
             border: 0,
           }}
         >
@@ -84,29 +81,29 @@ export default function MintButton() {
         </Modal.Header>
         <Modal.Body
           style={{
-            backgroundColor: "#080808",
+            backgroundColor: '#080808',
             border: 0,
           }}
         >
-          <Form className="AuthForm">
-            <input type="file" accept="image/*" onChange={handleFileChange} />
+          <Form className='AuthForm'>
+            <input type='file' accept='image/*' onChange={handleFileChange} />
             <input
-              type="text"
-              placeholder="Name of Item"
+              type='text'
+              placeholder='Name of Item'
               onChange={(e) => {
                 setItemName(e.target.value);
               }}
             />
             <input
-              type="text"
-              placeholder="PSA Grade"
+              type='text'
+              placeholder='PSA Grade'
               onChange={(e) => {
                 setPsaGrade(e.target.value);
               }}
             />
             <input
-              type="text"
-              placeholder="Certificate Number"
+              type='text'
+              placeholder='Certificate Number'
               onChange={(e) => {
                 setCertificateNumber(e.target.value);
               }}
@@ -115,12 +112,12 @@ export default function MintButton() {
         </Modal.Body>
         <Modal.Footer
           style={{
-            backgroundColor: "#080808",
+            backgroundColor: '#080808',
             border: 0,
           }}
         >
           <Button
-            variant="secondary"
+            variant='secondary'
             onClick={() => {
               handleClose();
               setItemName(null);
@@ -137,9 +134,10 @@ export default function MintButton() {
             isDisabled={!file || !itemName || !psaGrade || !address}
             action={async () => {
               if (!address) {
-                alert("Please connect your wallet");
+                alert('Please connect your wallet');
                 return;
               }
+              
 
               await mintNft({
                 metadata: {
@@ -150,6 +148,7 @@ export default function MintButton() {
                 supply: 1,
                 to: address, // disabled if address is undefined
               });
+              console.log('Minted NFT-ESA: ' + SEPOLIA_MINT_TX_ID);
               handleClose();
             }}
           >
@@ -162,7 +161,7 @@ export default function MintButton() {
           marginLeft: 20,
         }}
         onClick={handleShow}
-        className="btn btn-outline-primary"
+        className='btn btn-outline-primary'
       >
         Mint New
       </button>
