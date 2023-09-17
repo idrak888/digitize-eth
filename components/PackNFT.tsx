@@ -16,7 +16,7 @@ type Props = {
   contractAddress: string;
   tokenId: any;
   status?: string;
-  hideBtn: boolean;
+  hideBtn?: boolean;
 };
 
 export const PackNFTCard = ({ contractAddress, tokenId, status, hideBtn }: Props) => {

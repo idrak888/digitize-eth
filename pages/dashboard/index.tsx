@@ -22,8 +22,7 @@ export default function index() {
   const { data: directListings, isLoading: loadingDirectListings } =
     useDirectListings(marketplace, {
       tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,
-    }
-  );
+    });
 
   const address = useAddress();
   const [user, setUser] = useLocalStorage<User | null>(
@@ -121,31 +120,6 @@ export default function index() {
                 <p>Loading...</p>
               )}
             </div>
-              display: 'flex',
-              flexDirection: 'row',
-              alignItems: 'center',
-            }}
-          >
-            <h4>Your Items</h4>
-            <MintButton />
-          </div>
-          <div style={{
-            width: "100%"
-          }}>
-            {!!directListings ? (
-              directListings?.map((listing, index) => (
-                <div className='card' key={index}>
-                  <PackNFTCard
-                    contractAddress={listing.assetContractAddress}
-                    tokenId={listing.tokenId}
-                    status={listing.status}
-                    hideBtn={true}
-                  />
-                </div>
-              ))
-            ) : (
-              <p>Loading...</p>
-            )}
           </div>
         </div>
       </div>
