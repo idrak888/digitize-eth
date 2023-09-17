@@ -162,8 +162,6 @@ export default function MintButton() {
           >
             Submit
           </Web3Button>
-          {isLoading && <p>Loading...</p>}
-          {(error as Error) && <button>{(error as Error).message}</button>}
         </Modal.Footer>
       </Modal>
       <button
