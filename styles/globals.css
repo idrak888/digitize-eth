@@ -197,3 +197,15 @@ a {
   padding: 20px 30px;
   border-radius: 20px;
 }
+
+.actionRow {
+  margin-top: 15px;
+}
+
+.actionRow .col-sm {
+  border: 1px solid rgb(48, 48, 48);
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
