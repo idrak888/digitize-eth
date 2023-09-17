@@ -18,7 +18,7 @@ export default async function handler(
       walletAddress,
       email,
       physicalAddress,
-      kycEsa,
+      kycEsa: "empty",
     },
   });
 
