@@ -16,6 +16,9 @@ export default function Home() {
 			<div
 				className={`${styles.center} container`}
 				style={{
+					width: "100%",
+					margin: "auto",
+					display: "block",
 					marginTop: 100,
 				}}
 			>
@@ -32,6 +35,7 @@ export default function Home() {
 							style={{
 								fontSize: 70,
 								fontWeight: "bold",
+								marginLeft: 80
 							}}
 						>
 							Digitize your physical collectibles into NFTs
@@ -44,6 +48,8 @@ export default function Home() {
 								width: "100%",
 								maxWidth: 400,
 								padding: 30,
+								display: "block",
+								margin: "auto"
 							}}
 							src={"/image1.png"}
 						/>
@@ -51,7 +57,8 @@ export default function Home() {
 				</div>
 				<div
 					style={{
-						marginTop: 100,
+						width: "100%",
+						marginTop: 100
 					}}
 				>
 					<div className="row">

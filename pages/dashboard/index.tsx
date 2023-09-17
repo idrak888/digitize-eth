@@ -15,12 +15,12 @@ import { USER_LOCAL_STORAGE_KEY } from "@/config";
 import Loading from "@/components/Loading";
 
 export default function index() {
-  const { contract: marketplace, isLoading: loadingMarketplace } = useContract(
+  const { contract: marketplace } = useContract(
     MUMBAI_MARKETPLACE_ADDRESS,
     "marketplace-v3"
   );
 
-  const { data: directListings, isLoading: loadingDirectListings } =
+  const { data: directListings } =
     useDirectListings(marketplace, {
       tokenContract: MUMBAI_DIGITIZE_ETH_ADDRESS,
     });
@@ -47,15 +47,15 @@ export default function index() {
           marginTop: 100,
         }}
       >
-        <h1
-          style={{
-            fontSize: 30,
-            fontWeight: "bold",
-            marginLeft: 20,
-          }}
-          suppressHydrationWarning
-        >
-          Welcome Back
+        <h1 style={{ fontSize: 30, fontWeight: "bold", marginLeft: 20 }}>
+          Welcome Back,{" "}
+          {address
+            ? `${address.substring(0, 6)}...${address.substring(
+                address.length - 5,
+                address.length - 1
+              )}`
+            : "Not signed in"}
+          !
         </h1>
         <div
           className="row"
@@ -94,16 +94,8 @@ export default function index() {
               alignItems: "center",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-              }}
-            >
-              <h4>Your Items</h4>
-              <MintButton />
-            </div>
+            <h4>Your Items</h4>
+            <MintButton />
           </div>
           <div>
             <div>
@@ -114,6 +106,7 @@ export default function index() {
                       contractAddress={listing.assetContractAddress}
                       tokenId={listing.tokenId}
                       status={listing.status.toString()}
+                      hideBtn={true}
                     />
                   </div>
                 ))
