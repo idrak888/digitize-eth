@@ -34,7 +34,7 @@ export default function MarketPlace() {
         marginTop: 100
       }}>
         <h4>Marketplace</h4>
-        <div>
+        <div className='row'>
           {!!directListings ? (
             directListings
               ?.filter((listing) => listing.status === 4)

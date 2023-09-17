@@ -191,3 +191,9 @@ a {
   bottom: 0;
   font-size: 12px;
 }
+
+.col-sm-10 {
+  background-color: rgb(10, 10, 10);
+  padding: 20px 30px;
+  border-radius: 20px;
+}
