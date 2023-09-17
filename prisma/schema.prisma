@@ -17,4 +17,5 @@ model User {
   email           String @unique
   walletAddress   String @unique
   physicalAddress String
+  kycEsa          String
 }
