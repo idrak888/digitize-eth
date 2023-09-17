@@ -2,6 +2,9 @@ import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import React from 'react';
 import Navbar from '@/components/Navbar';
+import { FaEthereum } from 'react-icons/fa';
+import { RiTeamFill } from 'react-icons/ri';
+import { FaMoneyBill } from 'react-icons/fa';
 
 export default function Home() {
   return (
@@ -143,16 +146,24 @@ export default function Home() {
           <br />
           <div className='row'>
             <div className='col-sm step'>
-              <h4>Step 1</h4>
-              <p>
+              <h4>
                 {' '}
+                <FaEthereum />
+                {'   '}
+                Step 1
+              </h4>
+              <p>
                 Connect your wallet. Choose from a variety of supported wallets, such as
                 Metamask, WalletConnect, Coinbase Wallet, and more. You can also create a
                 new wallet if you don’t have one already.
               </p>
             </div>
             <div className='col-sm step'>
-              <h4>Step 2</h4>
+              <h4>
+                <RiTeamFill />
+                {'   '}
+                Step 2
+              </h4>
               <p>
                 Submit your valuables. Provide clear and high-quality images and
                 descriptions of your valuables that you want to digitize and trade. Our
@@ -160,7 +171,11 @@ export default function Home() {
               </p>
             </div>
             <div className='col-sm step'>
-              <h4>Step 3</h4>
+              <h4>
+                <FaMoneyBill />
+                {'   '}
+                Step 3
+              </h4>
               <p>
                 Trade! Browse our marketplace to discover and exchange rare and unique
                 collectibles with other users. You can also track the value and popularity
