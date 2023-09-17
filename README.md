@@ -1,6 +1,10 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 # Digitize-Eth
+
+<img width="1330" alt="Screenshot 2023-09-17 at 4 44 59 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/f8d3ff7c-e5fc-4e11-89dc-0eec435be827">
+
+
 ## Inspiration 💡
 
 Buying, selling, and trading physical collectibles can be a rather tedious task, and this has become even more apparent with the recent surge of NFTs (Non-Fungible Tokens).
