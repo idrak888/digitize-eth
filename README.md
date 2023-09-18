@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-# Bl0ckify
+# Bl0ckify - Hack the North 2023 
 
 <img width="1613" alt="Screenshot 2023-09-17 at 6 55 23 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/02a20ea2-379a-4dfb-ad04-5ed4523af225">
 
@@ -9,6 +9,8 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 <img width="2029" alt="Screenshot 2023-09-17 at 7 27 18 AM" src="https://github.com/idrak888/digitize-eth/assets/72030222/3707177c-a05e-490b-adfe-bd42fe537c07">
 
 Video Demo: [https://youtu.be/3-WpAtG7PqA](https://youtu.be/3-WpAtG7PqA)
+
+Devpost URL [here](https://devpost.com/software/digitize-eth?ref_content=user-portfolio&ref_feature=in_progress).
 
 
 ## Inspiration 💡
