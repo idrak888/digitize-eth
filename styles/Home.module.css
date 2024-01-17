@@ -21,3 +21,16 @@
     filter: blur(45px);
     transform: translateZ(0);
 }
+
+.h1 {
+    font-size: 70px;
+    font-weight: bold;
+    margin-left: 80px;
+}
+
+@media only screen and (max-width: 600px) {
+    .h1 {
+        font-size: 40px;
+        margin-left: 10px;
+    }
+}
